@@ -19,6 +19,7 @@ This project offers the following features:
 - Tailwind CSS
 - JavaScript
 - ESLint
+- Prettier
 - Github Projects
 
 ## Getting Started
@@ -50,7 +51,7 @@ cd Semester-Project-2
 npm install
 ```
 
-This will install Tailwind CSS, ESLint, and other required dependencies listed in `package.json`.
+This will install Tailwind CSS, ESLint, Prettier, and other required dependencies listed in `package.json`.
 
 ### Setting up Tailwind CSS
 
@@ -114,6 +115,55 @@ For the best development experience:
 1. Install the ESLint extension in your code editor
 2. Enable auto-fix on save for automatic code formatting
 3. Configure your editor to show linting errors inline
+
+### Code Formatting with Prettier
+
+Prettier is configured in this project to maintain consistent code formatting:
+
+#### Prettier Configuration
+
+1. **Prettier is installed** as a dev dependency in `package.json`
+2. **Configuration file** (`.prettierrc`) defines formatting rules
+3. **Consistent formatting** across all contributors
+4. **Integration with ESLint** for complete code quality
+
+#### Available Prettier Commands
+
+**Check formatting:**
+
+```bash
+npx prettier --check .
+```
+
+**Format all files:**
+
+```bash
+npx prettier --write .
+```
+
+**Format specific files:**
+
+```bash
+npx prettier --write "**/*.{js,html,css,md}"
+npx prettier --write index.html
+```
+
+#### Prettier Configuration Details
+
+The project uses the following formatting rules (`.prettierrc`):
+
+- **Semicolons**: Always add semicolons at the end of statements
+- **Quotes**: Use double quotes for strings
+- **Consistent spacing**: Automatic indentation and spacing
+- **Line endings**: Consistent across different operating systems
+
+#### IDE Integration
+
+For the best formatting experience:
+
+1. Install the Prettier extension in your code editor
+2. Enable "Format on Save" for automatic formatting
+3. Configure your editor to use the project's `.prettierrc` settings
 
 ### Running the Project
 
@@ -184,15 +234,18 @@ Contributions are what make the open source community such an amazing place to l
 6. **Make Your Changes**
    - Follow the existing code style and structure
    - Run ESLint to check for code quality issues: `npx eslint .`
+   - Format your code with Prettier: `npx prettier --write .`
    - Fix any linting errors before committing
    - Test your changes thoroughly
    - Ensure Tailwind CSS classes are working properly
 
-7. **Check Code Quality**
+7. **Check Code Quality & Formatting**
 
    ```bash
    npx eslint .
    npx eslint . --fix  # Auto-fix fixable issues
+   npx prettier --check .  # Check formatting
+   npx prettier --write .  # Fix formatting
    ```
 
 8. **Commit Your Changes**
@@ -217,6 +270,7 @@ Contributions are what make the open source community such an amazing place to l
 
 - **Code Style**: Follow the existing code formatting and structure
 - **ESLint**: Run `npx eslint .` before committing to ensure code quality
+- **Prettier**: Run `npx prettier --write .` to format your code consistently
 - **Commit Messages**: Use clear and descriptive commit messages
 - **Testing**: Test your changes across different screen sizes (responsive design)
 - **CSS**: Use Tailwind CSS classes instead of custom CSS when possible
