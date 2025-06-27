@@ -4,9 +4,597 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Auction Hub</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <script src="/js/app.js" type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/235f170a74.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body>
-    Welcome to The Auction Hub!
+  <body class="bg-gray-50 min-h-screen">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-2">
+            <img
+              src="./images/logo-initials.svg"
+              alt="The Auction Hub Logo"
+              class="w-20 h-full"
+            />
+            <span class="text-xl font-bold text-gray-800">The Auction Hub</span>
+          </div>
+          <div class="hidden md:flex items-center gap-4">
+            <a
+              href="./auctions/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Browse Auctions</a
+            >
+            <a
+              href="./create-listing/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Create Listing</a
+            >
+            <a
+              href="./profile/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Profile</a
+            >
+            <a
+              href="./login/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Login</a
+            >
+            <a
+              href="./register/"
+              class="font-semibold text-gray-700 border-blue-600 border-2 hover:text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+              >Register</a
+            >
+            <a
+              href="./logout/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Logout</a
+            >
+          </div>
+          <button
+            id="menu-button"
+            class="md:hidden text-gray-700"
+            aria-label="Open mobile menu"
+          >
+            <i class="fa fa-bars fa-lg"></i>
+          </button>
+        </div>
+      </nav>
+      <div
+        id="mobile-menu"
+        class="md:hidden bg-white shadow-lg border-t border-gray-200 hidden"
+      >
+        <nav class="container mx-auto px-4 py-4">
+          <div class="flex flex-col space-y-4">
+            <a
+              href="./auctions/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Browse Auctions</a
+            >
+            <a
+              href="./create-listing/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Create Listing</a
+            >
+            <a
+              href="./profile/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Profile</a
+            >
+            <a
+              href="./login/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Login</a
+            >
+            <a
+              href="./register/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Register</a
+            >
+            <a
+              href="./logout/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2"
+              >Logout</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20"
+      >
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            Discover Premium <span class="text-yellow-300">Auctions</span>
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-blue-100">
+            Bid on exclusive items from around the world
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#auctions"
+              class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200"
+            >
+              Browse Auctions
+            </a>
+            <a
+              href="#"
+              class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-200"
+            >
+              Start Selling
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div class="text-3xl font-bold text-blue-600 mb-2">10,000+</div>
+              <div class="text-gray-600">Active Auctions</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-blue-600 mb-2">50,000+</div>
+              <div class="text-gray-600">Happy Bidders</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-blue-600 mb-2">$2M+</div>
+              <div class="text-gray-600">Items Sold</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold text-blue-600 mb-2">99.8%</div>
+              <div class="text-gray-600">Success Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Auctions Section -->
+      <section id="auctions" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Featured Auctions
+            </h2>
+            <p class="text-gray-600 text-lg">
+              Discover amazing items ending soon
+            </p>
+          </div>
+
+          <!-- Auction Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Auction Card 1 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=250&fit=crop"
+                  alt="Vintage Watch"
+                  class="w-full h-48 object-cover"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+                >
+                  Ending Soon
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  Vintage Rolex Submariner
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Classic 1970s diving watch in excellent condition
+                </p>
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <span class="text-sm text-gray-500">Current Bid</span>
+                    <div class="text-2xl font-bold text-green-600">$8,750</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-sm text-gray-500">Time Left</span>
+                    <div class="text-lg font-semibold text-red-600">2h 15m</div>
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+                >
+                  Place Bid
+                </button>
+              </div>
+            </article>
+
+            <!-- Auction Card 2 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop"
+                  alt="Modern Art"
+                  class="w-full h-48 object-cover"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+                >
+                  New
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  Contemporary Abstract Painting
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Original artwork by emerging artist Sarah Chen
+                </p>
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <span class="text-sm text-gray-500">Current Bid</span>
+                    <div class="text-2xl font-bold text-green-600">$1,200</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-sm text-gray-500">Time Left</span>
+                    <div class="text-lg font-semibold text-orange-600">
+                      1d 8h
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+                >
+                  Place Bid
+                </button>
+              </div>
+            </article>
+
+            <!-- Auction Card 3 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=250&fit=crop"
+                  alt="Designer Sneakers"
+                  class="w-full h-48 object-cover"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+                >
+                  Hot
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  Limited Edition Sneakers
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Air Jordan 1 Retro High OG "Chicago" - Size 10
+                </p>
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <span class="text-sm text-gray-500">Current Bid</span>
+                    <div class="text-2xl font-bold text-green-600">$450</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-sm text-gray-500">Time Left</span>
+                    <div class="text-lg font-semibold text-blue-600">
+                      3d 12h
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+                >
+                  Place Bid
+                </button>
+              </div>
+            </article>
+
+            <!-- Auction Card 4 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=250&fit=crop"
+                  alt="Vintage Camera"
+                  class="w-full h-48 object-cover"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+                >
+                  Rare
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  Leica M3 Vintage Camera
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  1950s rangefinder camera in working condition
+                </p>
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <span class="text-sm text-gray-500">Current Bid</span>
+                    <div class="text-2xl font-bold text-green-600">$2,800</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-sm text-gray-500">Time Left</span>
+                    <div class="text-lg font-semibold text-green-600">
+                      5d 2h
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+                >
+                  Place Bid
+                </button>
+              </div>
+            </article>
+
+            <!-- Auction Card 5 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop"
+                  alt="Luxury Handbag"
+                  class="w-full h-48 object-cover"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+                >
+                  Premium
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  Hermès Birkin Bag
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Authentic leather handbag in pristine condition
+                </p>
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <span class="text-sm text-gray-500">Current Bid</span>
+                    <div class="text-2xl font-bold text-green-600">$12,500</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-sm text-gray-500">Time Left</span>
+                    <div class="text-lg font-semibold text-purple-600">
+                      6d 18h
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+                >
+                  Place Bid
+                </button>
+              </div>
+            </article>
+
+            <!-- Auction Card 6 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1564466809058-bf4114613385?w=400&h=250&fit=crop"
+                  alt="Antique Vase"
+                  class="w-full h-48 object-cover"
+                />
+                <div
+                  class="absolute top-4 left-4 bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+                >
+                  Antique
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  Ming Dynasty Porcelain
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Rare 16th century Chinese porcelain vase
+                </p>
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <span class="text-sm text-gray-500">Current Bid</span>
+                    <div class="text-2xl font-bold text-green-600">$25,000</div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-sm text-gray-500">Time Left</span>
+                    <div class="text-lg font-semibold text-indigo-600">
+                      7d 4h
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+                >
+                  Place Bid
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <!-- View More Button -->
+          <div class="text-center mt-12">
+            <a
+              href="#"
+              class="inline-block bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-900 transition duration-200 font-semibold"
+            >
+              View All Auctions
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Start Bidding?
+          </h2>
+          <p class="text-xl mb-8 text-blue-100">
+            Join thousands of successful bidders on The Auction Hub
+          </p>
+          <a
+            href="#"
+            class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 inline-block"
+          >
+            Create Free Account
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <h3 class="text-xl font-bold">The Auction Hub</h3>
+            </div>
+            <p class="text-gray-400 mb-4">
+              Your trusted marketplace for premium auctions worldwide.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-200"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-200"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-200"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Browse Auctions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >How to Bid</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Sell an Item</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >My Account</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Support -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Support</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Help Center</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact</h4>
+            <div class="space-y-2 text-gray-400">
+              <p>📧 support@auctionhub.com</p>
+              <p>📞 +1 (555) 123-4567</p>
+              <p>📍 123 Auction Street<br />New York, NY 10001</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 The Auction Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
