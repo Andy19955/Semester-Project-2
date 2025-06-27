@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch",
     "build": "npx tailwindcss -i ./css/input.css -o ./css/style.css --minify",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "if [ \"$NODE_ENV\" != \"production\" ] && [ \"$NODE_ENV\" != \"netlify\" ]; then husky install; fi"
   },
   "repository": {
     "type": "git",
