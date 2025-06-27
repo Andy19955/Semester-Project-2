@@ -8,6 +8,9 @@ function router() {
     case "/index.html":
       toggleMenu();
       break;
+    case "/register/":
+      toggleMenu();
+      break;
   }
 }
 
