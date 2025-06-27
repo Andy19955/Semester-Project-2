@@ -182,7 +182,6 @@ Contributions are what make the open source community such an amazing place to l
    ```
 
 6. **Make Your Changes**
-
    - Follow the existing code style and structure
    - Run ESLint to check for code quality issues: `npx eslint .`
    - Fix any linting errors before committing
