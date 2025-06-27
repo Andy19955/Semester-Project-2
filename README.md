@@ -20,6 +20,8 @@ This project offers the following features:
 - JavaScript
 - ESLint
 - Prettier
+- Husky
+- lint-staged
 - Github Projects
 
 ## Getting Started
@@ -51,7 +53,7 @@ cd Semester-Project-2
 npm install
 ```
 
-This will install Tailwind CSS, ESLint, Prettier, and other required dependencies listed in `package.json`.
+This will install Tailwind CSS, ESLint, Prettier, Husky, lint-staged, and other required dependencies listed in `package.json`.
 
 ### Setting up Tailwind CSS
 
@@ -165,6 +167,73 @@ For the best formatting experience:
 2. Enable "Format on Save" for automatic formatting
 3. Configure your editor to use the project's `.prettierrc` settings
 
+### Git Hooks with Husky & lint-staged
+
+This project uses Husky and lint-staged to automatically run code quality checks before commits:
+
+#### What happens on commit:
+
+**Automatic pre-commit checks:**
+
+1. **JavaScript files** (`.js`):
+   - Prettier formats the code automatically
+   - ESLint checks and fixes code quality issues
+2. **HTML files** (`.html`):
+   - Prettier formats the code automatically
+3. **Commit proceeds** only if all checks pass successfully
+
+#### Configuration Details
+
+The project is configured with:
+
+- **Husky**: Manages Git hooks for automated workflows
+- **lint-staged**: Runs tools only on staged files (faster execution)
+- **Pre-commit hook**: Automatically triggered before each commit
+
+#### lint-staged Configuration
+
+From `package.json`:
+
+```json
+"lint-staged": {
+  "*.js": [
+    "prettier --write",
+    "eslint --fix"
+  ],
+  "*.html": [
+    "prettier --write"
+  ]
+}
+```
+
+#### Manual Commands
+
+You can run the same checks manually:
+
+```bash
+# Run lint-staged manually
+npx lint-staged
+
+# Check what would run without executing
+npx lint-staged --dry-run
+```
+
+#### Bypass Hooks (Emergency Only)
+
+If you need to bypass the pre-commit checks:
+
+```bash
+# Skip pre-commit hooks (use with caution)
+git commit --no-verify -m "Emergency commit"
+```
+
+#### Benefits
+
+- **Automatic quality control** - No manual steps to forget
+- **Consistent formatting** - All committed code follows the same style
+- **Faster execution** - Only checks files you've changed
+- **Team consistency** - Everyone follows the same standards
+
 ### Running the Project
 
 #### Development Mode
@@ -233,26 +302,31 @@ Contributions are what make the open source community such an amazing place to l
 
 6. **Make Your Changes**
    - Follow the existing code style and structure
-   - Run ESLint to check for code quality issues: `npx eslint .`
-   - Format your code with Prettier: `npx prettier --write .`
-   - Fix any linting errors before committing
+   - Make your code changes
    - Test your changes thoroughly
    - Ensure Tailwind CSS classes are working properly
 
-7. **Check Code Quality & Formatting**
+7. **Commit Your Changes** (Automatic Quality Checks)
+
+   ```bash
+   git add .
+   git commit -m "Add some AmazingFeature"
+   ```
+
+   **Note**: Husky will automatically run before your commit:
+   - Prettier will format your code
+   - ESLint will check and fix issues
+   - Commit will proceed only if all checks pass
+
+8. **Manual Quality Checks** (Optional)
+   If you want to run checks manually before committing:
 
    ```bash
    npx eslint .
    npx eslint . --fix  # Auto-fix fixable issues
    npx prettier --check .  # Check formatting
    npx prettier --write .  # Fix formatting
-   ```
-
-8. **Commit Your Changes**
-
-   ```bash
-   git add .
-   git commit -m "Add some AmazingFeature"
+   npx lint-staged  # Run the same checks as pre-commit hook
    ```
 
 9. **Push to Your Branch**
@@ -269,8 +343,8 @@ Contributions are what make the open source community such an amazing place to l
 ### Guidelines
 
 - **Code Style**: Follow the existing code formatting and structure
-- **ESLint**: Run `npx eslint .` before committing to ensure code quality
-- **Prettier**: Run `npx prettier --write .` to format your code consistently
+- **Automatic Checks**: Pre-commit hooks will automatically run ESLint and Prettier
+- **Manual Checks**: You can run `npx lint-staged` to test the pre-commit checks manually
 - **Commit Messages**: Use clear and descriptive commit messages
 - **Testing**: Test your changes across different screen sizes (responsive design)
 - **CSS**: Use Tailwind CSS classes instead of custom CSS when possible
