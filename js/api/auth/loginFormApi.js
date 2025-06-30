@@ -27,7 +27,6 @@ export async function loginFormApi(loginData) {
 
   const response = await fetch(loginUrl, options);
   const json = await response.json();
-  console.log(json);
 
   if (!response.ok) {
     throw new Error(json.errors?.[0]?.message || "Login failed.");
