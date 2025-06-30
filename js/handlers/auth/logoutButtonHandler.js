@@ -1,4 +1,4 @@
-import { clearStorage } from "../helpers/storage.js";
+import { clearStorage } from "../../helpers/storage.js";
 
 /**
  * Handles logout button click.
