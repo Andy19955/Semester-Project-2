@@ -1,5 +1,6 @@
-import { registrationFormListener } from "./listeners/registrationFormListener.js";
 import { toggleMenu } from "./ui/shared/toggleMenu.js";
+import { registrationFormListener } from "./listeners/auth/registrationFormListener.js";
+import { loginFormListener } from "./listeners/auth/loginFormListener.js";
 
 /**
  * Routes the application based on current pathname.
@@ -23,6 +24,11 @@ function router() {
     case "/register/index.html":
       toggleMenu();
       registrationFormListener();
+      break;
+    case "/login/":
+    case "/login/index.html":
+      toggleMenu();
+      loginFormListener();
       break;
   }
 }

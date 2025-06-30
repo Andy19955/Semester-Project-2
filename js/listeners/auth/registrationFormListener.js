@@ -1,4 +1,4 @@
-import { registrationFormHandler } from "../handlers/auth/registrationFormHandler.js";
+import { registrationFormHandler } from "../../handlers/auth/registrationFormHandler.js";
 
 /**
  * Attaches a submit event listener to the registration form.
