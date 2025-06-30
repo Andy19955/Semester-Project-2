@@ -73,3 +73,15 @@ export function saveApiKey(key) {
 export function getApiKey() {
   return localStorage.getItem(apiKey);
 }
+
+/**
+ * Clears the token, name, and API key from local storage.
+ *
+ * @example
+ * clearStorage();
+ */
+export function clearStorage() {
+  localStorage.removeItem(tokenKey);
+  localStorage.removeItem(nameKey);
+  localStorage.removeItem(apiKey);
+}
