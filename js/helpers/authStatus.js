@@ -48,12 +48,12 @@ export function updateAuthUI() {
 
   const authedLinks = document.querySelectorAll(".authed-link");
   authedLinks.forEach((authedLink) => {
-    authedLink.style.display = loggedIn ? "block" : "none";
+    authedLink.classList.toggle("hidden", !loggedIn);
   });
 
   const nonAuthLinks = document.querySelectorAll(".non-authed-link");
   nonAuthLinks.forEach((nonAuthedLink) => {
-    nonAuthedLink.style.display = loggedIn ? "none" : "block";
+    nonAuthedLink.classList.toggle("hidden", loggedIn);
   });
 }
 
