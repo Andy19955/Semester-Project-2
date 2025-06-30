@@ -30,7 +30,6 @@ export async function registrationFormApi(registrationData) {
 
   const response = await fetch(registrationUrl, options);
   const json = await response.json();
-  console.log(json);
 
   if (!response.ok) {
     throw new Error(json.errors?.[0]?.message || "Registration failed.");
