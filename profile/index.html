@@ -40,11 +40,12 @@
               class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
               >Profile</a
             >
-            <a
-              href="/logout/"
+            <button
+              id="logout-button"
               class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
-              >Logout</a
             >
+              Logout
+            </button>
           </div>
           <button
             id="menu-button"
@@ -76,18 +77,114 @@
               class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
               >Profile</a
             >
-            <a
-              href="/logout/"
+            <button
+              id="logout-button"
               class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2"
-              >Logout</a
             >
+              Logout
+            </button>
           </div>
         </nav>
       </div>
     </header>
-    <main class="container mx-auto flex flex-col flex-1 gap-5 p-3">
-      <section class="flex justify-center items-center py-12">
-        <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-2xl"></div>
+    <main class="container mx-auto flex flex-col flex-1 gap-5 p-4">
+      <section
+        class="flex flex-col md:flex-row gap-5 bg-white rounded shadow-lg p-5"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1750779940886-edfa73b5c5c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Profile Picture"
+          class="w-56 h-56 rounded-lg object-cover mx-auto md:mx-0"
+        />
+        <div class="flex-1 flex flex-col gap-3 justify-between">
+          <div class="flex-1">
+            <h1 class="font-semibold text-2xl">Your name here</h1>
+            <p>This is my temp bio.</p>
+          </div>
+          <a
+            href="#"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200 w-fit hidden md:block"
+            ><i class="fa fa-pencil"></i> Edit Profile</a
+          >
+        </div>
+        <div class="flex flex-col gap-3 md:border-l md:border-gray-200 md:pl-5">
+          <p><span class="font-semibold">Credits:</span> 1000</p>
+          <a
+            href="#"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200 w-fit md:hidden block"
+            ><i class="fa fa-pencil"></i> Edit Profile</a
+          >
+        </div>
+      </section>
+      <section class="flex flex-col gap-4">
+        <div
+          class="flex flex-col gap-4 sm:flex-row justify-between sm:items-center"
+        >
+          <h2 class="text-xl font-semibold">My Listings</h2>
+          <a
+            href="/create-listing/"
+            class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-700 hover:to-purple-700 transition duration-200 w-fit"
+          >
+            <i class="fa fa-plus"></i> Create New Listing
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="bg-white rounded shadow-lg p-5 hover:cursor-pointer hover:shadow-xl transition-shadow duration-200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Listing Image"
+              class="w-full h-56 object-cover rounded mb-4"
+            />
+            <h3 class="font-semibold text-lg">Vintage Watch</h3>
+            <p class="text-gray-600">Bids: 0</p>
+          </div>
+          <div
+            class="bg-white rounded shadow-lg p-5 hover:cursor-pointer hover:shadow-xl transition-shadow duration-200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Listing Image"
+              class="w-full h-56 object-cover rounded mb-4"
+            />
+            <h3 class="font-semibold text-lg">Antique Vase</h3>
+            <p class="text-gray-600">Bids: 0</p>
+          </div>
+          <div
+            class="bg-white rounded shadow-lg p-5 hover:cursor-pointer hover:shadow-xl transition-shadow duration-200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Listing Image"
+              class="w-full h-56 object-cover rounded mb-4"
+            />
+            <h3 class="font-semibold text-lg">Antique Vase</h3>
+            <p class="text-gray-600">Bids: 0</p>
+          </div>
+          <div
+            class="bg-white rounded shadow-lg p-5 hover:cursor-pointer hover:shadow-xl transition-shadow duration-200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Listing Image"
+              class="w-full h-56 object-cover rounded mb-4"
+            />
+            <h3 class="font-semibold text-lg">Antique Vase</h3>
+            <p class="text-gray-600">Bids: 0</p>
+          </div>
+          <div
+            class="bg-white rounded shadow-lg p-5 hover:cursor-pointer hover:shadow-xl transition-shadow duration-200"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Listing Image"
+              class="w-full h-56 object-cover rounded mb-4"
+            />
+            <h3 class="font-semibold text-lg">Antique Vase</h3>
+            <p class="text-gray-600">Bids: 0</p>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="bg-gray-800 text-white py-12">
