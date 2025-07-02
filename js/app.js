@@ -7,6 +7,7 @@ import {
   redirectIfLoggedIn,
   requireAuth,
 } from "./helpers/authStatus.js";
+import { profileHandler } from "./handlers/profiles/profileHandler.js";
 
 /**
  * Routes the application based on current pathname.
@@ -45,6 +46,7 @@ function router() {
       requireAuth();
       toggleMenu();
       logoutButtonListener();
+      profileHandler();
       break;
   }
 }
