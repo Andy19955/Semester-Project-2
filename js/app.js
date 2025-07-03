@@ -8,6 +8,8 @@ import {
   requireAuth,
 } from "./helpers/authStatus.js";
 import { profileHandler } from "./handlers/profiles/profileHandler.js";
+import { editProfileHandler } from "./handlers/profiles/editProfileHandler.js";
+import { editProfileFormListener } from "./listeners/profiles/editProfileFormListener.js";
 
 /**
  * Routes the application based on current pathname.
@@ -47,6 +49,14 @@ function router() {
       toggleMenu();
       logoutButtonListener();
       profileHandler();
+      break;
+    case "/profile/edit-profile/":
+    case "/profile/edit-profile/index.html":
+      requireAuth();
+      toggleMenu();
+      logoutButtonListener();
+      editProfileHandler();
+      editProfileFormListener();
       break;
   }
 }
