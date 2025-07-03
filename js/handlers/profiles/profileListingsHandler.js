@@ -28,12 +28,10 @@ export async function profileListingsHandler(name, page) {
 
     if (listingsCount > 0) {
       displayListings(listings.data, listingsContainer);
-      // Set up infinite scroll for successful listings
       window.addEventListener("scroll", () => {
         setupProfileInfiniteScroll(name, isLastPage);
       });
     } else {
-      // Show no listings message
       listingsContainer.innerHTML = "";
       listingsContainer.className =
         "flex items-center justify-center py-12 min-h-[300px]";
@@ -52,7 +50,6 @@ export async function profileListingsHandler(name, page) {
     listingsLoader?.classList.add("hidden");
     displayMessage("#messageContainer", "error", error.message);
 
-    // Show error state
     listingsContainer.innerHTML = "";
     listingsContainer.className =
       "flex items-center justify-center py-12 min-h-[300px]";
