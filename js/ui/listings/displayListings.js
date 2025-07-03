@@ -1,32 +1,43 @@
 import { createListing } from "./createListing.js";
 
 /**
- * Displays a list of posts in the specified container.
+ * Displays a list of listings in the specified container.
+ * Creates and appends listing cards for each listing in the array.
  *
- * @param {Array<Object>} posts - An array of post objects to display.
- * @param {HTMLElement} postsContainer - The container element where the posts will be displayed.
+ * @param {Array<Object>} listings - An array of listing objects to display.
+ * @param {HTMLElement} listingsContainer - The container element where the listings will be displayed.
  *
  * @example
- * const posts = [
+ * const listings = [
  *   {
- *     title: "Post 1",
- *     body: "This is the body of post 1.",
+ *     id: "1",
+ *     title: "Vintage Watch",
  *     author: {
- *       name: "Author 1"
+ *       avatar: {
+ *         url: "https://example.com/avatar1.jpg"
+ *       }
  *     },
- *     created: "2025-02-28T12:34:56Z"
+ *     media: {
+ *       url: "https://example.com/watch.jpg",
+ *       alt: "Vintage pocket watch"
+ *     }
  *   },
  *   {
- *     title: "Post 2",
- *     body: "This is the body of post 2.",
+ *     id: "2",
+ *     title: "Antique Vase",
  *     author: {
- *       name: "Author 2"
+ *       avatar: {
+ *         url: "https://example.com/avatar2.jpg"
+ *       }
  *     },
- *     created: "2025-02-28T12:34:56Z"
+ *     media: {
+ *       url: "https://example.com/vase.jpg",
+ *       alt: "Blue antique vase"
+ *     }
  *   }
  * ];
- * const postsContainer = document.querySelector("#postsContainer");
- * displayPosts(posts, postsContainer);
+ * const listingsContainer = document.querySelector("#listings-container");
+ * displayListings(listings, listingsContainer);
  */
 export function displayListings(listings, listingsContainer) {
   listings.forEach(function (listing) {

@@ -1,7 +1,8 @@
 import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
 
 /**
- * Creates a DOM element representing a listing.
+ * Creates a DOM element representing a listing card with hover effects and overlay.
+ * Generates a clickable listing card with author avatar, listing image, and title overlay.
  *
  * @param {Object} listing - The listing object containing the data to display.
  * @param {string} listing.id - The ID of the listing.
@@ -13,12 +14,12 @@ import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
  * @param {string} [listing.media.url] - The URL of the listing image.
  * @param {string} [listing.media.alt] - The alt text for the listing image.
  *
- * @returns {HTMLAnchorElement} - The DOM element representing the listing.
+ * @returns {HTMLAnchorElement} - The clickable DOM element representing the listing card.
  *
  * @example
  * const listing = {
  *   id: "1",
- *   title: "My listing Title",
+ *   title: "My Listing Title",
  *   author: {
  *     avatar: {
  *       url: "https://example.com/avatar.jpg"
@@ -29,7 +30,7 @@ import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
  *     alt: "An example image"
  *   }
  * };
- * const listingElement = createlisting(listing);
+ * const listingElement = createListing(listing);
  * document.body.append(listingElement);
  */
 export function createListing(listing) {

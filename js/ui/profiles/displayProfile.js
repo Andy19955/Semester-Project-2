@@ -1,5 +1,6 @@
 /**
  * Displays the profile information on the profile page.
+ * Populates profile elements with user data and shows the profile container.
  *
  * @param {Object} profile - The profile object containing user information.
  * @param {string} profile.name - The name of the profile.
@@ -7,10 +8,7 @@
  * @param {string} profile.avatar.url - The URL of the avatar image.
  * @param {string} profile.avatar.alt - The alt text for the avatar image.
  * @param {string} [profile.bio] - The biography of the profile.
- * @param {Object} profile._count - The count object containing posts, followers, and following counts.
- * @param {number} profile._count.posts - The number of posts by the profile.
- * @param {number} profile._count.followers - The number of followers of the profile.
- * @param {number} profile._count.following - The number of profiles the user is following.
+ * @param {number} profile.credits - The number of credits the user has.
  *
  * @example
  * const profile = {
@@ -20,11 +18,7 @@
  *     alt: "John Doe's Avatar"
  *   },
  *   bio: "Web developer and tech enthusiast.",
- *   _count: {
- *     posts: 42,
- *     followers: 100,
- *     following: 50
- *   }
+ *   credits: 1000
  * };
  * displayProfile(profile);
  */

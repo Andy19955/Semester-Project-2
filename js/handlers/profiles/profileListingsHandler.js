@@ -4,13 +4,16 @@ import { displayListings } from "../../ui/listings/displayListings.js";
 import { setupProfileInfiniteScroll } from "../../helpers/profileInfiniteScroll.js";
 
 /**
- * Handles fetching and displaying profile posts, and sets up infinite scroll.
+ * Handles fetching and displaying profile listings, and sets up infinite scroll.
+ * Manages loading states, error handling, and displays appropriate messages for empty results.
  *
- * @param {string} name - The name of the profile to fetch posts for.
- * @param {number} page - The page number to fetch posts from.
+ * @param {string} name - The name of the profile to fetch listings for.
+ * @param {number} page - The page number to fetch listings from.
+ * @returns {Promise<void>}
+ * @throws {Error} When listings fetch fails or API returns an error
  *
  * @example
- * profilePostsHandler("JohnDoe", 1);
+ * profileListingsHandler("JohnDoe", 1);
  */
 export async function profileListingsHandler(name, page) {
   const listingsContainer = document.querySelector("#listings-container");
