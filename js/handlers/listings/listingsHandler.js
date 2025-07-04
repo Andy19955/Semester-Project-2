@@ -3,10 +3,20 @@ import { fetchListings } from "../../api/listings/fetchListings.js";
 import { displayListings } from "../../ui/listings/displayListings.js";
 
 /**
- * Handles fetching and displaying the listings.
+ * Handles fetching and displaying auction listings.
+ * Manages loading states and error handling for the listings display.
+ *
+ * @param {number} [limit=40] - The maximum number of listings to fetch and display.
+ * @returns {Promise<void>}
+ * @throws {Error} When listings fetch fails or API returns an error
  *
  * @example
- * latestListingsHandler();
+ * // Fetch and display default number of listings (40)
+ * listingsHandler();
+ *
+ * @example
+ * // Fetch and display specific number of listings
+ * listingsHandler(20);
  */
 export async function listingsHandler(limit = 40) {
   const listingsLoader = document.querySelector("#listings-loader");
