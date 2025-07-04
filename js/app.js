@@ -10,7 +10,7 @@ import {
 import { profileHandler } from "./handlers/profiles/profileHandler.js";
 import { editProfileHandler } from "./handlers/profiles/editProfileHandler.js";
 import { editProfileFormListener } from "./listeners/profiles/editProfileFormListener.js";
-import { listingsHandler } from "./handlers/listings/listingsHandler.js";
+import { activeListingsHandler } from "./handlers/listings/activeListingsHandler.js";
 
 /**
  * Routes the application based on current pathname.
@@ -31,7 +31,7 @@ function router() {
       toggleMenu();
       updateAuthUI();
       logoutButtonListener();
-      listingsHandler(6);
+      activeListingsHandler(6);
       break;
     case "/register/":
     case "/register/index.html":
@@ -64,7 +64,7 @@ function router() {
     case "/auctions/index.html":
       toggleMenu();
       logoutButtonListener();
-      listingsHandler();
+      activeListingsHandler();
       break;
   }
 }
