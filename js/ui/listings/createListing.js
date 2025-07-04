@@ -62,15 +62,15 @@ export function createListing(listing) {
     "h-52",
     "group-hover:h-full",
   );
-  if (listing.media && listing.media.url) {
+  if (listing.media && listing.media.length > 0 && listing.media[0]?.url) {
     listingImage.setAttribute(
       "alt",
-      listing.media?.alt ||
-        (listing.media?.url
+      listing.media[0]?.alt ||
+        (listing.media[0]?.url
           ? `${listing.title} listing's featured image`
           : fallBackImageAlt),
     );
-    listingImage.src = listing.media.url;
+    listingImage.src = listing.media[0].url;
     listingImage.onerror = () => {
       listingImage.src = fallbackImage;
       listingImage.alt = fallBackImageAlt;
