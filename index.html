@@ -154,8 +154,9 @@
             View All Auctions <i class="fa fa-arrow-right"></i>
           </a>
         </div>
+        <div id="messageContainer" class="hidden"></div>
         <div
-          id="latest-listings-loader"
+          id="listings-loader"
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <div class="bg-gray-100 rounded-lg p-5 animate-pulse">
@@ -175,7 +176,7 @@
           </div>
         </div>
         <div
-          id="latest-listings-container"
+          id="listings-container"
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         ></div>
       </section>
@@ -231,7 +232,7 @@
             href="/register/"
             class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 non-authed-link"
           >
-            <i class="fa fa-rocket mr-2"></i>Get Started Free
+            <i class="fa fa-rocket mr-2"></i>Get Started
           </a>
           <a
             href="/auctions/"
