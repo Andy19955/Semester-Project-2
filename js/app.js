@@ -31,7 +31,7 @@ function router() {
       toggleMenu();
       updateAuthUI();
       logoutButtonListener();
-      activeListingsHandler(6);
+      activeListingsHandler(6, 1, false);
       break;
     case "/register/":
     case "/register/index.html":
@@ -64,7 +64,7 @@ function router() {
     case "/auctions/index.html":
       toggleMenu();
       logoutButtonListener();
-      activeListingsHandler();
+      activeListingsHandler(40, 1, true);
       break;
   }
 }
