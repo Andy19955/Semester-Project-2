@@ -60,6 +60,12 @@ function router() {
       editProfileHandler();
       editProfileFormListener();
       break;
+    case "/auctions/":
+    case "/auctions/index.html":
+      toggleMenu();
+      logoutButtonListener();
+      listingsHandler();
+      break;
   }
 }
 
