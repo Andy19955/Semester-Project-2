@@ -85,6 +85,8 @@ export function createListing(listing) {
   const listingDescriptionHeader = document.createElement("div");
   listingDescriptionHeader.classList.add(
     "flex",
+    "flex-col",
+    "md:flex-row",
     "items-center",
     "gap-2",
     "justify-between",
@@ -106,8 +108,8 @@ export function createListing(listing) {
     listingStatus.innerText = "Ended";
   } else {
     listingStatus.classList.add(
-      "text-gray-700",
-      "bg-gray-100",
+      "text-green-700",
+      "bg-green-100",
       "px-2",
       "py-1",
       "rounded",
@@ -126,7 +128,6 @@ export function createListing(listing) {
   );
 
   const listingEndsAt = document.createElement("p");
-  listingEndsAt.classList.add("text-gray-500");
   listingEndsAt.innerText = `Ends at: ${new Date(listing.endsAt).toLocaleString(
     "no-NO",
     {
@@ -140,7 +141,6 @@ export function createListing(listing) {
   )}`;
 
   const listingBids = document.createElement("p");
-  listingBids.classList.add("text-gray-500");
   listingBids.innerText = `${listing._count.bids} bids`;
 
   listingDescriptionHeader.append(listingTitle, listingStatus);
