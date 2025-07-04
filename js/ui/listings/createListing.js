@@ -47,18 +47,6 @@ export function createListing(listing) {
     "h-64",
   );
 
-  const listingProfileImage = document.createElement("img");
-  listingProfileImage.classList.add(
-    "absolute",
-    "top-1",
-    "left-1",
-    "z-20",
-    "w-10",
-    "h-10",
-    "rounded-full",
-  );
-  listingProfileImage.src = listing.author.avatar.url;
-
   const listingImage = document.createElement("img");
   listingImage.classList.add(
     "rounded-lg",
@@ -114,7 +102,6 @@ export function createListing(listing) {
   listingTitle.classList.add("text-black", "font-semibold");
   listingTitle.innerText = listing.title;
 
-  listingCard.append(listingProfileImage);
   listingCard.append(listingImage);
   listingCard.append(titleOverlayDiv);
   listingCard.append(listingTitle);

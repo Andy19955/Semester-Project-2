@@ -42,6 +42,7 @@ import { createListing } from "./createListing.js";
 export function displayListings(listings, listingsContainer) {
   listings.forEach(function (listing) {
     const listingItem = createListing(listing);
+    console.log(listingItem);
     listingsContainer.append(listingItem);
   });
 }
