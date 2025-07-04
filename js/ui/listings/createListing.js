@@ -39,32 +39,23 @@ export function createListing(listing) {
 
   const listingCard = document.createElement("div");
   listingCard.classList.add(
+    "bg-white",
+    "p-4",
+    "flex",
+    "flex-col",
+    "gap-2",
     "overflow-hidden",
-    "relative",
-    "group",
+    "shadow",
+    "hover:shadow-lg",
     "hover:cursor-pointer",
     "rounded-lg",
-    "h-64",
   );
-
-  const listingProfileImage = document.createElement("img");
-  listingProfileImage.classList.add(
-    "absolute",
-    "top-1",
-    "left-1",
-    "z-20",
-    "w-10",
-    "h-10",
-    "rounded-full",
-  );
-  listingProfileImage.src = listing.author.avatar.url;
 
   const listingImage = document.createElement("img");
   listingImage.classList.add(
     "rounded-lg",
     "shadow-md",
     "object-cover",
-    "group-hover:scale-125",
     "transition-all",
     "duration-300",
     "w-full",
@@ -90,34 +81,41 @@ export function createListing(listing) {
     listingImage.src = fallbackImage;
   }
 
-  const titleOverlayDiv = document.createElement("div");
-  titleOverlayDiv.classList.add(
-    "bg-black",
-    "bg-opacity-30",
-    "w-full",
-    "h-full",
-    "z-20",
-    "absolute",
-    "top-0",
-    "left-0",
-    "justify-center",
-    "items-center",
-    "hidden",
-    "group-hover:flex",
-  );
-  const titleOverlayText = document.createElement("h2");
-  titleOverlayText.classList.add("text-white", "font-semibold");
-  titleOverlayText.innerText = listing.title;
-  titleOverlayDiv.append(titleOverlayText);
-
   const listingTitle = document.createElement("h2");
   listingTitle.classList.add("text-black", "font-semibold");
   listingTitle.innerText = listing.title;
 
-  listingCard.append(listingProfileImage);
-  listingCard.append(listingImage);
-  listingCard.append(titleOverlayDiv);
-  listingCard.append(listingTitle);
+  const listingDescription = document.createElement("div");
+  listingDescription.classList.add(
+    "flex",
+    "flex-col",
+    "justify-between",
+    "items-center",
+    "md:flex-row",
+    "gap-2",
+  );
+
+  const listingEndsAt = document.createElement("p");
+  listingEndsAt.classList.add("text-gray-500");
+  listingEndsAt.innerText = `Ends at: ${new Date(listing.endsAt).toLocaleString(
+    "no-NO",
+    {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    },
+  )}`;
+
+  const listingBids = document.createElement("p");
+  listingBids.classList.add("text-gray-500");
+  listingBids.innerText = `${listing._count.bids} bids`;
+
+  listingDescription.append(listingEndsAt, listingBids);
+
+  listingCard.append(listingImage, listingTitle, listingDescription);
   listingCardLink.append(listingCard);
   return listingCardLink;
 }
