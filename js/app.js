@@ -11,6 +11,7 @@ import { profileHandler } from "./handlers/profiles/profileHandler.js";
 import { editProfileHandler } from "./handlers/profiles/editProfileHandler.js";
 import { editProfileFormListener } from "./listeners/profiles/editProfileFormListener.js";
 import { activeListingsHandler } from "./handlers/listings/activeListingsHandler.js";
+import { singleListingHandler } from "./handlers/listings/singleListingHandler.js";
 
 /**
  * Routes the application based on current pathname.
@@ -65,6 +66,13 @@ function router() {
       toggleMenu();
       logoutButtonListener();
       activeListingsHandler(40, 1, true);
+      break;
+    case "/listing/":
+    case "/listing/index.html":
+      toggleMenu();
+      singleListingHandler();
+      updateAuthUI();
+      logoutButtonListener();
       break;
   }
 }
