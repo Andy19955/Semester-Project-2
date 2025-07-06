@@ -46,14 +46,14 @@ export function requireAuth(redirectPath = "/login/") {
 export function updateAuthUI() {
   const loggedIn = isLoggedIn();
 
-  const authedLinks = document.querySelectorAll(".authed-link");
-  authedLinks.forEach((authedLink) => {
-    authedLink.classList.toggle("hidden", !loggedIn);
+  const authedElements = document.querySelectorAll(".authed-element");
+  authedElements.forEach((authedElement) => {
+    authedElement.classList.toggle("hidden", !loggedIn);
   });
 
-  const nonAuthLinks = document.querySelectorAll(".non-authed-link");
-  nonAuthLinks.forEach((nonAuthedLink) => {
-    nonAuthedLink.classList.toggle("hidden", loggedIn);
+  const nonAuthElements = document.querySelectorAll(".non-authed-element");
+  nonAuthElements.forEach((nonAuthedElement) => {
+    nonAuthedElement.classList.toggle("hidden", loggedIn);
   });
 }
 
