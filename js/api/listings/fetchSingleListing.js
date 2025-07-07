@@ -1,23 +1,24 @@
 import { listingsUrl } from "../../constants/apiUrls.js";
 
 /**
- * Fetches active auction listings from the API with pagination support.
- * Returns listings sorted by end date in ascending order (ending soonest first).
+ * Fetches a single auction listing from the API by its ID.
+ * Includes bid data in the response for displaying current bids and bid count.
  *
- * @param {number} limit - Maximum number of active listings to fetch per page
- * @param {number} [page] - Page number for pagination (optional)
- * @returns {Promise<Object>} Listings response from API containing active auction data and pagination metadata
- * @throws {Error} When active listings fetch fails or API returns error
- *
- * @example
- * // Fetch first page of 10 active listings
- * const activeListings = await fetchActiveListings(10, 1);
- * console.log(activeListings.data); // Array of up to 10 active listings
- * console.log(activeListings.meta.isLastPage); // Boolean indicating if this is the last page
+ * @param {string} listingId - The unique ID of the listing to fetch
+ * @returns {Promise<Object>} Single listing response from API containing listing data and bids
+ * @throws {Error} When listing fetch fails or API returns error
  *
  * @example
- * // Fetch without pagination
- * const activeListings = await fetchActiveListings(20);
+ * // Fetch a specific listing by ID
+ * const listing = await fetchSingleListing("abc123");
+ * console.log(listing.data); // Single listing object
+ * console.log(listing.data.bids); // Array of bids for this listing
+ *
+ * @example
+ * // Usage in listing detail page
+ * const listingId = getQueryParam("id");
+ * const response = await fetchSingleListing(listingId);
+ * displaySingleListing(response.data);
  */
 export async function fetchSingleListing(listingId) {
   const options = {

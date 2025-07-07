@@ -4,18 +4,16 @@ import { displaySingleListing } from "../../ui/listings/displaySingleListing.js"
 import { getQueryParam } from "../../helpers/getQueryParam.js";
 
 /**
- * Handles fetching and displaying active auction listings only.
- * Manages loading states, error handling, and optional infinite scroll setup for active listings display.
+ * Handles fetching and displaying a single auction listing.
+ * Extracts listing ID from URL query parameters, fetches the listing data, and displays it on the page.
+ * Manages loading states and error handling for single listing display.
  *
- * @param {number} [limit=40] - The maximum number of active listings to fetch and display.
- * @param {number} [page] - The page number for pagination (used with infinite scroll).
- * @param {boolean} [scrollLoader] - Whether to set up infinite scroll functionality.
  * @returns {Promise<void>}
- * @throws {Error} When active listings fetch fails or API returns an error
+ * @throws {Error} When listing ID is missing from URL or single listing fetch fails
  *
  * @example
- * // Fetch active listings with pagination and infinite scroll
- * activeListingsHandler(20, 1, true);
+ * // Called automatically when visiting /listing/?id=123
+ * singleListingHandler();
  */
 export async function singleListingHandler() {
   const listingLoader = document.querySelector("#listing-loader");
@@ -35,7 +33,9 @@ export async function singleListingHandler() {
   try {
     const listing = await fetchSingleListing(listingId);
     console.log(listing);
-    displaySingleListing(listing.data, listingContainer);
+    displaySingleListing(listing.data);
+    listingContainer.classList.remove("hidden");
+    listingContainer.classList.add("flex");
   } catch (error) {
     displayMessage("#messageContainer", "error", error.message);
   } finally {
