@@ -12,6 +12,8 @@ import { editProfileHandler } from "./handlers/profiles/editProfileHandler.js";
 import { editProfileFormListener } from "./listeners/profiles/editProfileFormListener.js";
 import { activeListingsHandler } from "./handlers/listings/activeListingsHandler.js";
 import { singleListingHandler } from "./handlers/listings/singleListingHandler.js";
+import { createListingFormListener } from "./listeners/listings/createListingFormListener.js";
+import { imageUrlPreview } from "./ui/listings/imageUrlPreview.js";
 
 /**
  * Routes the application based on current pathname.
@@ -75,11 +77,13 @@ function router() {
       singleListingHandler();
       updateAuthUI();
       break;
-    case "/create-listing/":
-    case "/create-listing/index.html":
+    case "/create-auction/":
+    case "/create-auction/index.html":
       requireAuth();
       toggleMenu();
       logoutButtonListener();
+      imageUrlPreview();
+      createListingFormListener();
       break;
   }
 }

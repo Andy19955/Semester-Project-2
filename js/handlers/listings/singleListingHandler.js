@@ -32,7 +32,6 @@ export async function singleListingHandler() {
 
   try {
     const listing = await fetchSingleListing(listingId);
-    console.log(listing);
     displaySingleListing(listing.data);
     listingContainer.classList.remove("hidden");
     listingContainer.classList.add("flex");

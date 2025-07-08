@@ -1,3 +1,5 @@
+import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
+
 /**
  * Displays a single auction listing on the listing detail page.
  * Populates listing image, title, description, end date, bid count, and current highest bid.
@@ -31,8 +33,18 @@ export function displaySingleListing(listing) {
   document.title = `${listing.title} - The Auction Hub`;
 
   const listingImage = document.querySelector("#listing-image");
-  listingImage.src = listing.media[0].url;
-  listingImage.setAttribute("alt", listing.media[0].alt || "Listing image");
+  if (listing.media && listing.media.length > 0 && listing.media[0]?.url) {
+    listingImage.alt = listing.media[0]?.alt || fallBackImageAlt;
+    listingImage.src = listing.media[0].url;
+    listingImage.onerror = () => {
+      listingImage.src = fallbackImage;
+      listingImage.alt = fallBackImageAlt;
+      listingImage.onerror = null;
+    };
+  } else {
+    listingImage.alt = fallBackImageAlt;
+    listingImage.src = fallbackImage;
+  }
 
   const listingTitle = document.querySelector("#listing-title");
   listingTitle.textContent = listing.title;
