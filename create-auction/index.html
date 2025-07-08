@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create auction - The Auction Hub</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <script src="/js/app.js" type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/235f170a74.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-gray-50 flex flex-col min-h-screen">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <a href="/" class="flex items-center space-x-2">
+            <img
+              src="/images/logo-initials.svg"
+              alt="The Auction Hub Logo"
+              class="w-20 h-full"
+            />
+            <span class="text-xl font-bold text-gray-800">The Auction Hub</span>
+          </a>
+          <div class="hidden md:flex items-center gap-4">
+            <a
+              href="/auctions/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Browse Auctions</a
+            >
+            <a
+              href="/create-auction/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Create Auction</a
+            >
+            <a
+              href="/profile/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+              >Profile</a
+            >
+            <button
+              id="logout-button"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200"
+            >
+              Logout
+            </button>
+          </div>
+          <button
+            id="menu-button"
+            class="md:hidden text-gray-700"
+            aria-label="Open mobile menu"
+          >
+            <i class="fa fa-bars fa-lg"></i>
+          </button>
+        </div>
+      </nav>
+      <div
+        id="mobile-menu"
+        class="md:hidden bg-white shadow-lg border-t border-gray-200 hidden"
+      >
+        <nav class="container mx-auto px-4 py-4">
+          <div class="flex flex-col space-y-4">
+            <a
+              href="/auctions/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Browse Auctions</a
+            >
+            <a
+              href="/create-auction/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Create Auction</a
+            >
+            <a
+              href="/profile/"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2 border-b border-gray-100"
+              >Profile</a
+            >
+            <button
+              id="logout-button"
+              class="font-semibold text-gray-700 hover:text-blue-600 transition duration-200 py-2"
+            >
+              Logout
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="container mx-auto flex flex-col flex-1 gap-5 p-3">
+      <section class="flex flex-col gap-8">
+        <h1 class="text-2xl text-center font-bold text-gray-800">
+          Create new auction
+        </h1>
+        <div id="messageContainer" class="hidden"></div>
+        <div
+          id="listing-container"
+          class="flex gap-4 flex-col lg:flex-row justify-between"
+        >
+          <div class="flex-1 w-full max-h-96 rounded-lg mx-auto lg:mx-0">
+            <img
+              id="listing-image"
+              src="/images/no-image.jpg"
+              alt="Gray sircle with text 'No image'"
+              class="w-full max-h-96 object-cover rounded-lg"
+            />
+          </div>
+          <form id="create-listing-form" class="flex-1">
+            <fieldset class="flex flex-col gap-5">
+              <div class="flex flex-col gap-1">
+                <label for="listing-title" class="font-semibold">Title</label>
+                <input
+                  type="text"
+                  id="listing-title"
+                  name="listing-title"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label for="listing-description" class="font-semibold"
+                  >Description</label
+                >
+                <textarea
+                  id="listing-description"
+                  name="listing-description"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label for="listing-image-url" class="font-semibold"
+                  >Image URL</label
+                >
+                <input
+                  type="url"
+                  id="listing-image-url"
+                  name="listing-image-url"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label for="listing-ending-date" class="font-semibold"
+                  >Ending date</label
+                >
+                <input
+                  type="datetime-local"
+                  id="listing-ending-date"
+                  name="listing-ending-date"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+            </fieldset>
+            <button
+              type="submit"
+              class="mt-4 w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition duration-200 font-semibold"
+            >
+              Create Auction
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="flex flex-col gap-4">
+            <h3 class="text-xl font-bold">The Auction Hub</h3>
+            <p class="text-gray-400 mb-4">
+              Your trusted marketplace for premium auctions worldwide.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h4 class="text-lg font-semibold">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Browse Auctions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >How to Bid</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Sell an Item</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >My Account</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h4 class="text-lg font-semibold">Support</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Help Center</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Terms of Service</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-200"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact</h4>
+            <div class="space-y-2 text-gray-400 whitespace-nowrap">
+              <p>
+                <i class="fa-duotone fa-envelope text-white"></i>
+                support@theauctionhub.com
+              </p>
+              <p>
+                <i class="fa-duotone fa-map-pin text-white"></i> Auction Street
+                123,<br />Oslo, Norway
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 The Auction Hub</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
