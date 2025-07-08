@@ -25,7 +25,7 @@ export async function fetchProfileListings(name, listingsPage) {
   };
 
   const response = await fetch(
-    `${profileUrl}/${name}/listings?_bids=true&limit=${maxListings}&page=${listingsPage}`,
+    `${profileUrl}/${name}/listings?_bids=true&limit=${maxListings}&page=${listingsPage}&sort=endsAt&sortOrder=asc`,
     options,
   );
   const json = await response.json();
