@@ -28,6 +28,8 @@
  * displaySingleListing(listing);
  */
 export function displaySingleListing(listing) {
+  document.title = `${listing.title} - The Auction Hub`;
+
   const listingImage = document.querySelector("#listing-image");
   listingImage.src = listing.media[0].url;
   listingImage.setAttribute("alt", listing.media[0].alt || "Listing image");
