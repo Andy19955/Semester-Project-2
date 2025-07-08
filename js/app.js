@@ -66,13 +66,14 @@ function router() {
       toggleMenu();
       logoutButtonListener();
       activeListingsHandler(40, 1, true);
+      updateAuthUI();
       break;
     case "/listing/":
     case "/listing/index.html":
       toggleMenu();
+      logoutButtonListener();
       singleListingHandler();
       updateAuthUI();
-      logoutButtonListener();
       break;
   }
 }
