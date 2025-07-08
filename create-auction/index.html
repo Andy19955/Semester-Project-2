@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile - The Auction Hub</title>
+    <title>Create auction - The Auction Hub</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
     <script src="/js/app.js" type="module"></script>
@@ -87,95 +87,80 @@
         </nav>
       </div>
     </header>
-    <main class="container mx-auto flex flex-col flex-1 gap-5 p-4">
-      <div id="messageContainer" class="hidden"></div>
-      <section>
+    <main class="container mx-auto flex flex-col flex-1 gap-5 p-3">
+      <section class="flex flex-col gap-8">
+        <h1 class="text-2xl text-center font-bold text-gray-800">
+          Create new auction
+        </h1>
+        <div id="messageContainer" class="hidden"></div>
         <div
-          id="profile-loader"
-          class="flex flex-col md:flex-row gap-5 bg-white rounded shadow-lg p-5 animate-pulse"
+          id="listing-container"
+          class="flex gap-4 flex-col lg:flex-row justify-between"
         >
-          <div class="w-56 h-56 rounded-lg mx-auto md:mx-0 bg-gray-200"></div>
-          <div class="flex-1 flex flex-col gap-3">
-            <div class="w-32 h-2 rounded bg-gray-200"></div>
-            <div class="h-2 rounded bg-gray-200"></div>
-            <div class="h-2 rounded bg-gray-200"></div>
-            <div class="h-2 rounded bg-gray-200"></div>
+          <div class="flex-1 w-full max-h-96 rounded-lg mx-auto lg:mx-0">
+            <img
+              id="listing-image"
+              src="/images/no-image.jpg"
+              alt="Gray sircle with text 'No image'"
+              class="w-full max-h-96 object-cover rounded-lg"
+            />
           </div>
-        </div>
-        <div
-          id="profile-container"
-          class="hidden flex-col md:flex-row gap-5 bg-white rounded shadow-lg p-5"
-        >
-          <img
-            id="profile-avatar"
-            src="https://images.unsplash.com/photo-1750779940886-edfa73b5c5c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Profile Picture"
-            class="w-56 h-56 rounded-lg object-cover mx-auto md:mx-0"
-          />
-          <div class="flex-1 flex flex-col gap-3 justify-between">
-            <div class="flex-1">
-              <h1 id="profile-name" class="font-semibold text-2xl">
-                Your name here
-              </h1>
-              <p id="profile-bio">This is my temp bio.</p>
-            </div>
-            <a
-              href="./edit-profile/"
-              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200 w-fit hidden md:block"
-              ><i class="fa fa-pencil"></i> Edit profile</a
+          <form id="create-listing-form" class="flex-1">
+            <fieldset class="flex flex-col gap-5">
+              <div class="flex flex-col gap-1">
+                <label for="listing-title" class="font-semibold">Title</label>
+                <input
+                  type="text"
+                  id="listing-title"
+                  name="listing-title"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label for="listing-description" class="font-semibold"
+                  >Description</label
+                >
+                <textarea
+                  id="listing-description"
+                  name="listing-description"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label for="listing-image-url" class="font-semibold"
+                  >Image URL</label
+                >
+                <input
+                  type="url"
+                  id="listing-image-url"
+                  name="listing-image-url"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label for="listing-ending-date" class="font-semibold"
+                  >Ending date</label
+                >
+                <input
+                  type="datetime-local"
+                  id="listing-ending-date"
+                  name="listing-ending-date"
+                  class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+            </fieldset>
+            <button
+              type="submit"
+              class="mt-4 w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition duration-200 font-semibold"
             >
-          </div>
-          <div
-            class="flex flex-col gap-3 md:border-l md:border-gray-200 md:pl-5"
-          >
-            <p class="font-semibold">
-              Credits:
-              <span id="profile-credits" class="font-normal">1000</span>
-            </p>
-            <a
-              href="./edit-profile/"
-              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200 w-fit md:hidden block"
-              ><i class="fa fa-pencil"></i> Edit profile</a
-            >
-          </div>
+              Create Auction
+            </button>
+          </form>
         </div>
-      </section>
-      <section class="flex flex-col gap-4">
-        <div
-          class="flex flex-col gap-4 sm:flex-row justify-between sm:items-center"
-        >
-          <h2 class="text-xl font-semibold">My Listings</h2>
-          <a
-            href="/create-listing/"
-            class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-700 hover:to-purple-700 transition duration-200 w-fit"
-          >
-            <i class="fa fa-plus"></i> Create New Listing
-          </a>
-        </div>
-        <div
-          id="listings-loader"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-            <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
-            <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-            <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
-          </div>
-          <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-            <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
-            <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-            <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
-          </div>
-          <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-            <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
-            <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-            <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
-          </div>
-        </div>
-        <div
-          id="listings-container"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        ></div>
       </section>
     </main>
     <footer class="bg-gray-800 text-white py-12">

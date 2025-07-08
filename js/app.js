@@ -75,6 +75,12 @@ function router() {
       singleListingHandler();
       updateAuthUI();
       break;
+    case "/create-listing/":
+    case "/create-listing/index.html":
+      requireAuth();
+      toggleMenu();
+      logoutButtonListener();
+      break;
   }
 }
 
