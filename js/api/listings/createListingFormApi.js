@@ -2,23 +2,24 @@ import { listingsUrl } from "../../constants/apiUrls.js";
 import { getApiKey, getToken } from "../../helpers/storage.js";
 
 /**
- * Registers a new user account via API.
+ * Creates a new auction listing via API.
  *
- * @param {Object} registrationData - User registration data
- * @param {string} registrationData.name - User's name
- * @param {string} registrationData.email - User's email address
- * @param {string} registrationData.password - User's password
- * @param {Object} [registrationData.avatar] - Optional avatar object
- * @returns {Promise<Object>} Registration response from API
- * @throws {Error} When registration fails or API returns error
+ * @param {Object} listingData - Listing data to create
+ * @param {string} listingData.title - The title of the listing
+ * @param {string} listingData.description - The description of the listing
+ * @param {string} listingData.endsAt - ISO string of when the auction ends
+ * @param {Object} [listingData.media] - Media object with url and alt properties
+ * @param {string} listingData.media.url - URL of the listing image
+ * @param {string} listingData.media.alt - Alt text for the listing image
  *
  * @example
- * const registrationData = {
- *   name: "John Doe",
- *   email: "john@noroff.no",
- *   password: "password123"
+ * const listingData = {
+ *   title: "Vintage Watch",
+ *   description: "Beautiful antique watch",
+ *   endsAt: "2025-01-15T10:00:00Z",
+ *   media: { url: "image.jpg", alt: "Watch image" }
  * };
- * const result = await registrationFormApi(registrationData);
+ * await createListingFormApi(listingData);
  */
 export async function createListingFormApi(listingData) {
   const options = {

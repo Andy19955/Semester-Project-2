@@ -2,16 +2,12 @@ import { createListingFormApi } from "../../api/listings/createListingFormApi.js
 import { displayMessage } from "../../ui/shared/displayMessage.js";
 
 /**
- * Handles createListing form submission.
- * Validates form data, transforms avatar URL to object format, and calls createListing API.
+ * Handles create listing form submission.
+ * Validates form data and creates new auction listing.
  *
  * @param {Event} event - Form submission event
- * @returns {Promise<void>}
- * @throws {Error} When required fields are missing or API call fails
  *
  * @example
- * // Attach to createListing form
- * const form = document.getElementById('createListing-form');
  * form.addEventListener('submit', createListingFormHandler);
  */
 export async function createListingFormHandler(event) {

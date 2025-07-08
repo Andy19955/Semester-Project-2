@@ -1,3 +1,10 @@
+/**
+ * Sets up real-time image preview for the listing image URL input field.
+ * Updates preview image as user types, shows fallback when empty.
+ *
+ * @example
+ * imageUrlPreview();
+ */
 export function imageUrlPreview() {
   const imageUrlInput = document.querySelector("#listing-image-url");
   const imagePreview = document.querySelector("#image-preview");
