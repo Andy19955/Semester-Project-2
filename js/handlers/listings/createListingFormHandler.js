@@ -40,10 +40,12 @@ export async function createListingFormHandler(event) {
   }
 
   if (data.imageUrl) {
-    data.media = {
-      url: data.imageUrl,
-      alt: `${data.title} listing image`,
-    };
+    data.media = [
+      {
+        url: data.imageUrl,
+        alt: `${data.title} listing image`,
+      },
+    ];
 
     delete data.imageUrl;
   }
