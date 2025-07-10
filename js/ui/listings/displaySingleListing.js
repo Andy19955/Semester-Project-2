@@ -1,4 +1,5 @@
 import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
+import { getName } from "../../helpers/storage.js";
 
 /**
  * Displays a single auction listing on the listing detail page.
@@ -59,6 +60,11 @@ export function displaySingleListing(listing) {
 
   const bidCountElement = document.querySelector("#listing-bid-count");
   bidCountElement.textContent = listing._count.bids || 0;
+
+  const bidContainer = document.querySelector("#bidding-container");
+  if (listing.seller.name === getName()) {
+    bidContainer.classList.add("hidden");
+  }
 
   if (listing.bids && listing.bids.length > 0) {
     const highestBid = listing.bids.reduce(
