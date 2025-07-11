@@ -26,6 +26,9 @@ export function displayMessage(container, messageType, message) {
     case "success":
       messageClasses.push("bg-green-100", "text-green-900", "border-green-900");
       break;
+    case "info":
+      messageClasses.push("bg-blue-100", "text-blue-900", "border-blue-900");
+      break;
   }
 
   const messageDiv = document.createElement("div");
