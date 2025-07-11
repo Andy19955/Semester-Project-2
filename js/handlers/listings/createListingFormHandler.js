@@ -32,7 +32,7 @@ export async function createListingFormHandler(event) {
     return;
   }
 
-  if (data.endingDate < new Date().toISOString().slice(0, 16)) {
+  if (data.endsAt < new Date().toISOString().slice(0, 16)) {
     displayMessage(
       "#messageContainer",
       "error",
@@ -40,6 +40,8 @@ export async function createListingFormHandler(event) {
     );
     return;
   }
+
+  data.endsAt = new Date(data.endsAt).toISOString();
 
   if (data.imageUrl) {
     data.media = [
