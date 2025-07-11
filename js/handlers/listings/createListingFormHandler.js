@@ -21,6 +21,8 @@ export async function createListingFormHandler(event) {
   const submitButton = form.querySelector("#submit-create-listing-form");
   const originalButtonText = submitButton.textContent;
 
+  const imagePreview = document.querySelector("#image-preview");
+
   if (!data.title || !data.description || !data.imageUrl || !data.endsAt) {
     displayMessage(
       "#messageContainer",
@@ -63,6 +65,8 @@ export async function createListingFormHandler(event) {
       "Auction listing created successfully!",
     );
     form.reset();
+    imagePreview.src = "/images/no-image.jpg";
+    imagePreview.alt = "Gray circle with text 'No image'";
   } catch (error) {
     displayMessage("#messageContainer", "error", error.message);
   } finally {
