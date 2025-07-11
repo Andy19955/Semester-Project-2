@@ -72,7 +72,18 @@ export function displaySingleListing(listing) {
   bidCountElement.textContent = listing._count.bids || 0;
 
   const bidContainer = document.querySelector("#bidding-container");
-  if (listing.seller.name === getName()) {
+  const currentTime = new Date();
+  const endTime = new Date(listing.endsAt);
+
+  // Check if auction has ended
+  if (endTime <= currentTime) {
+    bidContainer.classList.add("hidden");
+    displayMessage(
+      "#messageContainer",
+      "info",
+      "This auction has ended. No more bids can be placed.",
+    );
+  } else if (listing.seller.name === getName()) {
     bidContainer.classList.add("hidden");
   }
 
@@ -97,11 +108,19 @@ export function displaySingleListing(listing) {
     minimumBidAmountInfo.textContent = `${highestBidObj.amount + 1} credits`;
 
     if (highestBidObj.bidder.name === getName()) {
-      displayMessage(
-        "#messageContainer",
-        "success",
-        `You currently have the highest bid! Your bid of ${highestBidObj.amount} ${highestBidObj.amount === 1 ? "credit" : "credits"} is leading.`,
-      );
+      if (endTime <= currentTime) {
+        displayMessage(
+          "#messageContainer",
+          "success",
+          `Congratulations! You won this auction with a bid of ${highestBidObj.amount} ${highestBidObj.amount === 1 ? "credit" : "credits"}.`,
+        );
+      } else {
+        displayMessage(
+          "#messageContainer",
+          "success",
+          `You currently have the highest bid! Your bid of ${highestBidObj.amount} ${highestBidObj.amount === 1 ? "credit" : "credits"} is leading.`,
+        );
+      }
     }
   }
 }
