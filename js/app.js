@@ -14,6 +14,7 @@ import { activeListingsHandler } from "./handlers/listings/activeListingsHandler
 import { singleListingHandler } from "./handlers/listings/singleListingHandler.js";
 import { createListingFormListener } from "./listeners/listings/createListingFormListener.js";
 import { imageUrlPreview } from "./ui/listings/imageUrlPreview.js";
+import { biddingFormListener } from "./listeners/listings/biddingFormListener.js";
 
 /**
  * Routes the application based on current pathname.
@@ -76,6 +77,7 @@ function router() {
       logoutButtonListener();
       singleListingHandler();
       updateAuthUI();
+      biddingFormListener();
       break;
     case "/create-auction/":
     case "/create-auction/index.html":

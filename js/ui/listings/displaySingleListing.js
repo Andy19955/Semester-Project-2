@@ -1,11 +1,13 @@
 import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
 import { getName } from "../../helpers/storage.js";
+import { displayMessage } from "../shared/displayMessage.js";
 
 /**
  * Displays a single auction listing on the listing detail page.
  * Populates listing image, title, description, end date, bid count, and current highest bid.
  * Sets minimum bid amount for the bidding form and handles proper grammar for credit/credits.
- * Shows or hides UI elements based on whether bids exist.
+ * Shows or hides UI elements based on whether bids exist and user permissions.
+ * Hides bidding container if user is the seller. Displays success message if user has highest bid.
  *
  * @param {Object} listing - The listing object to display.
  * @param {string} listing.title - The title of the listing.
@@ -14,10 +16,14 @@ import { getName } from "../../helpers/storage.js";
  * @param {string} listing.media[].url - URL of the media item.
  * @param {string} [listing.media[].alt] - Alt text for the media item.
  * @param {string} listing.endsAt - ISO string of when the auction ends.
+ * @param {Object} listing.seller - The seller object with name property.
+ * @param {string} listing.seller.name - The name of the seller.
  * @param {Object} listing._count - Object containing count statistics.
  * @param {number} listing._count.bids - Number of bids placed on the listing.
- * @param {Array<Object>} [listing.bids] - Array of bid objects with amount properties.
+ * @param {Array<Object>} [listing.bids] - Array of bid objects with amount and bidder properties.
  * @param {number} listing.bids[].amount - The bid amount in credits.
+ * @param {Object} listing.bids[].bidder - The bidder object with name property.
+ * @param {string} listing.bids[].bidder.name - The name of the bidder.
  *
  * @example
  * const listing = {
@@ -25,8 +31,12 @@ import { getName } from "../../helpers/storage.js";
  *   description: "Beautiful antique watch from 1920s",
  *   media: [{ url: "https://example.com/watch.jpg", alt: "Vintage watch" }],
  *   endsAt: "2025-01-15T10:00:00Z",
+ *   seller: { name: "john_doe" },
  *   _count: { bids: 5 },
- *   bids: [{ amount: 100 }, { amount: 250 }, { amount: 180 }]
+ *   bids: [
+ *     { amount: 100, bidder: { name: "alice" } },
+ *     { amount: 250, bidder: { name: "bob" } }
+ *   ]
  * };
  * displaySingleListing(listing);
  */
@@ -67,13 +77,13 @@ export function displaySingleListing(listing) {
   }
 
   if (listing.bids && listing.bids.length > 0) {
-    const highestBid = listing.bids.reduce(
-      (max, bid) => (bid.amount > max ? bid.amount : max),
-      0,
+    const highestBidObj = listing.bids.reduce(
+      (max, bid) => (bid.amount > max.amount ? bid : max),
+      listing.bids[0],
     );
 
     const currentBidElement = document.querySelector("#listing-current-bid");
-    currentBidElement.textContent = `${highestBid} ${highestBid === 1 ? "credit" : "credits"}`;
+    currentBidElement.textContent = `${highestBidObj.amount} ${highestBidObj.amount === 1 ? "credit" : "credits"}`;
 
     const listingHighestBidContainer = document.querySelector(
       "#listing-highest-bid",
@@ -81,9 +91,17 @@ export function displaySingleListing(listing) {
     listingHighestBidContainer.classList.remove("hidden");
 
     const bidAmountInput = document.querySelector("#bid-amount");
-    bidAmountInput.setAttribute("min", highestBid + 1);
+    bidAmountInput.setAttribute("min", highestBidObj.amount + 1);
 
     const minimumBidAmountInfo = document.querySelector("#minimum-bid-amount");
-    minimumBidAmountInfo.textContent = `${highestBid + 1} credits`;
+    minimumBidAmountInfo.textContent = `${highestBidObj.amount + 1} credits`;
+
+    if (highestBidObj.bidder.name === getName()) {
+      displayMessage(
+        "#messageContainer",
+        "success",
+        `You currently have the highest bid! Your bid of ${highestBidObj.amount} ${highestBidObj.amount === 1 ? "credit" : "credits"} is leading.`,
+      );
+    }
   }
 }
