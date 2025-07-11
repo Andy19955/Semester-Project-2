@@ -72,13 +72,8 @@ export function displaySingleListing(listing) {
       0,
     );
 
-    let creditsEnding = "credits";
-    if (highestBid === 1) {
-      creditsEnding = "credit";
-    }
-
     const currentBidElement = document.querySelector("#listing-current-bid");
-    currentBidElement.textContent = `${highestBid} ${creditsEnding}`;
+    currentBidElement.textContent = `${highestBid} ${highestBid === 1 ? "credit" : "credits"}`;
 
     const listingHighestBidContainer = document.querySelector(
       "#listing-highest-bid",
