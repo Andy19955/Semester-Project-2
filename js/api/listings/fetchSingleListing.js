@@ -29,7 +29,7 @@ export async function fetchSingleListing(listingId) {
   };
 
   const response = await fetch(
-    `${listingsUrl}/${listingId}?_bids=true`,
+    `${listingsUrl}/${listingId}?_seller=true&_bids=true`,
     options,
   );
   const json = await response.json();
