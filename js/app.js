@@ -12,6 +12,7 @@ import { editProfileHandler } from "./handlers/profiles/editProfileHandler.js";
 import { editProfileFormListener } from "./listeners/profiles/editProfileFormListener.js";
 import { activeListingsHandler } from "./handlers/listings/activeListingsHandler.js";
 import { singleListingHandler } from "./handlers/listings/singleListingHandler.js";
+import { editListingHandler } from "./handlers/listings/editListingHandler.js";
 import { createListingFormListener } from "./listeners/listings/createListingFormListener.js";
 import { imageUrlPreview } from "./ui/listings/imageUrlPreview.js";
 import { biddingFormListener } from "./listeners/listings/biddingFormListener.js";
@@ -78,6 +79,13 @@ function router() {
       singleListingHandler();
       updateAuthUI();
       biddingFormListener();
+      break;
+    case "/listing/edit-listing/":
+    case "/listing/edit-listing/index.html":
+      requireAuth();
+      toggleMenu();
+      logoutButtonListener();
+      editListingHandler();
       break;
     case "/create-auction/":
     case "/create-auction/index.html":
