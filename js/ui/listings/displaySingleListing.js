@@ -88,6 +88,7 @@ export function displaySingleListing(listing) {
   }
   if (listing.seller.name === getName()) {
     bidContainer.classList.add("hidden");
+    editListingButton.href = `./edit-listing/?id=${listing.id}`;
     editListingButton.classList.remove("hidden");
   }
 
