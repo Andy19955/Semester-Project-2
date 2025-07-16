@@ -75,6 +75,8 @@ export function displaySingleListing(listing) {
   const currentTime = new Date();
   const endTime = new Date(listing.endsAt);
 
+  const editListingButton = document.querySelector("#edit-listing-button");
+
   // Check if auction has ended
   if (endTime <= currentTime) {
     bidContainer.classList.add("hidden");
@@ -83,8 +85,10 @@ export function displaySingleListing(listing) {
       "info",
       "This auction has ended. No more bids can be placed.",
     );
-  } else if (listing.seller.name === getName()) {
+  }
+  if (listing.seller.name === getName()) {
     bidContainer.classList.add("hidden");
+    editListingButton.classList.remove("hidden");
   }
 
   if (listing.bids && listing.bids.length > 0) {
