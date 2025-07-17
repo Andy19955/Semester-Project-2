@@ -154,13 +154,46 @@
                 />
               </div>
             </fieldset>
-            <button
-              type="submit"
-              id="submit-edit-listing-form"
-              class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition duration-200 font-semibold"
+            <div class="flex flex-col md:flex-row items-center gap-3">
+              <button
+                type="submit"
+                id="submit-edit-listing-form"
+                class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition duration-200 font-semibold"
+              >
+                Save
+              </button>
+              <button
+                id="delete-listing-button"
+                type="button"
+                class="w-full bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-200 transition duration-200 font-semibold"
+              >
+                Delete Listing
+              </button>
+            </div>
+            <div
+              id="delete-listing-confirmation"
+              class="bg-red-50 text-red-600 p-4 rounded-lg hidden"
             >
-              Save
-            </button>
+              <p class="font-semibold">
+                Are you sure you want to permanently delete this listing?
+              </p>
+              <div class="flex gap-3 mt-3">
+                <button
+                  id="confirm-delete-listing-button"
+                  type="button"
+                  class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:ring-4 focus:ring-red-200 transition duration-200 font-semibold"
+                >
+                  Yes, delete listing permanently
+                </button>
+                <button
+                  id="cancel-delete-listing-button"
+                  type="button"
+                  class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 transition duration-200 font-semibold"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </section>
