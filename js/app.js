@@ -18,6 +18,7 @@ import { imageUrlPreview } from "./ui/listings/imageUrlPreview.js";
 import { biddingFormListener } from "./listeners/listings/biddingFormListener.js";
 import { editListingFormListener } from "./listeners/listings/editListingFormListener.js";
 import { deleteListingButtonListener } from "./listeners/listings/deleteListingButtonListener.js";
+import { searchListingsFormListener } from "./listeners/listings/searchListingsFormListener.js";
 
 /**
  * Routes the application based on current pathname.
@@ -73,6 +74,7 @@ function router() {
       logoutButtonListener();
       activeListingsHandler(40, 1, true);
       updateAuthUI();
+      searchListingsFormListener();
       break;
     case "/listing/":
     case "/listing/index.html":
