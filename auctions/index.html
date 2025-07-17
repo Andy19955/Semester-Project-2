@@ -113,12 +113,15 @@
         >
           <h1 class="text-3xl font-bold text-gray-800">All auctions</h1>
           <form id="search-form" class="flex items-center gap-2">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Search auctions..."
-              class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-blue-600"
-            />
+            <fieldset>
+              <input
+                type="text"
+                id="search-input"
+                name="searchQuery"
+                placeholder="Search auctions..."
+                class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              />
+            </fieldset>
             <button
               type="submit"
               id="search-button"
