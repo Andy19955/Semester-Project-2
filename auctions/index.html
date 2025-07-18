@@ -124,6 +124,7 @@
           <h1 class="text-3xl font-bold text-gray-800">All auctions</h1>
           <form id="search-form" class="flex items-center gap-2">
             <fieldset>
+              <label for="search-input" class="sr-only">Search auctions</label>
               <input
                 type="text"
                 id="search-input"
@@ -136,8 +137,9 @@
               type="submit"
               id="search-button"
               class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+              aria-label="Search auctions"
             >
-              <i class="fa fa-search"></i>
+              <i class="fa fa-search" aria-hidden="true"></i>
             </button>
           </form>
         </div>
