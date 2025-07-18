@@ -9,7 +9,7 @@ A modern online auction platform where users can discover rare treasures, place 
 ## Features
 
 - **User Authentication** - Login, register, and profile management
-- **Auction Listings** - Browse, search, and filter auction items
+- **Auction Listings** - Browse and search auction items
 - **Bidding System** - Real-time bidding with bid validation
 - **Listing Management** - Create, edit, and manage your auction listings
 - **Responsive Design** - Mobile-first design using Tailwind CSS
