@@ -3,16 +3,18 @@ import { clearStorage } from "../../helpers/storage.js";
 /**
  * Handles logout button click.
  * Clears stored user data and redirects to home page.
+ * Disables the clicked button during logout process.
  *
+ * @param {Event} event - The click event from the logout button
  * @example
- * // Attach to logout button
- * const button = document.getElementById('logout-button');
- * button.addEventListener('click', logoutButtonHandler);
+ * // Attach to logout buttons
+ * const buttons = document.querySelectorAll('.logout-button');
+ * buttons.forEach(button => button.addEventListener('click', logoutButtonHandler));
  */
-export async function logoutButtonHandler() {
-  const logoutButton = document.querySelector("#logout-button");
+export async function logoutButtonHandler(event) {
+  const clickedButton = event.target;
 
-  logoutButton.disabled = true;
+  clickedButton.disabled = true;
   clearStorage();
   window.location.href = "/";
 }
