@@ -27,6 +27,9 @@ import { displayMessage } from "../shared/displayMessage.js";
 export function displayEditListing(listing) {
   document.title = `Edit ${listing.title} - The Auction Hub`;
 
+  const cancelEditingLink = document.querySelector("#cancel-editing-link");
+  cancelEditingLink.href = `/listing/?id=${listing.id}`;
+
   const listingImage = document.querySelector("#image-preview");
   if (listing.media && listing.media.length > 0 && listing.media[0]?.url) {
     listingImage.alt = listing.media[0]?.alt || fallBackImageAlt;
