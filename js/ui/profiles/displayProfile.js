@@ -24,6 +24,7 @@
  */
 
 export function displayProfile(profile) {
+  console.log(profile);
   const profileName = document.querySelector("#profile-name");
   profileName.innerText = profile.name;
 
@@ -36,6 +37,14 @@ export function displayProfile(profile) {
 
   const profileCredits = document.querySelector("#profile-credits");
   profileCredits.innerText = profile.credits;
+
+  const profileAuctionsCreated = document.querySelector(
+    "#profile-auctions-created",
+  );
+  profileAuctionsCreated.innerText = profile._count.listings;
+
+  const profileWins = document.querySelector("#profile-wins");
+  profileWins.innerText = profile._count.wins;
 
   const profileContainer = document.querySelector("#profile-container");
   profileContainer.classList.add("flex");
