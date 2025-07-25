@@ -24,7 +24,6 @@
  */
 
 export function displayProfile(profile) {
-  console.log(profile);
   const profileName = document.querySelector("#profile-name");
   profileName.innerText = profile.name;
 

@@ -1,6 +1,7 @@
 import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
 import { getName } from "../../helpers/storage.js";
 import { displayMessage } from "../shared/displayMessage.js";
+import { displayBidHistory } from "./displayBidHistory.js";
 
 /**
  * Displays a single auction listing on the listing detail page.
@@ -10,6 +11,7 @@ import { displayMessage } from "../shared/displayMessage.js";
  * Hides bidding container if user is the seller. Displays success message if user has highest bid.
  *
  * @param {Object} listing - The listing object to display.
+ * @param {string} listing.id - The unique ID of the listing.
  * @param {string} listing.title - The title of the listing.
  * @param {string} [listing.description] - The description of the listing.
  * @param {Array<Object>} listing.media - Array of media objects with url and alt properties.
@@ -24,21 +26,7 @@ import { displayMessage } from "../shared/displayMessage.js";
  * @param {number} listing.bids[].amount - The bid amount in credits.
  * @param {Object} listing.bids[].bidder - The bidder object with name property.
  * @param {string} listing.bids[].bidder.name - The name of the bidder.
- *
- * @example
- * const listing = {
- *   title: "Vintage Pocket Watch",
- *   description: "Beautiful antique watch from 1920s",
- *   media: [{ url: "https://example.com/watch.jpg", alt: "Vintage watch" }],
- *   endsAt: "2025-01-15T10:00:00Z",
- *   seller: { name: "john_doe" },
- *   _count: { bids: 5 },
- *   bids: [
- *     { amount: 100, bidder: { name: "alice" } },
- *     { amount: 250, bidder: { name: "bob" } }
- *   ]
- * };
- * displaySingleListing(listing);
+
  */
 export function displaySingleListing(listing) {
   document.title = `${listing.title} - The Auction Hub`;
@@ -128,4 +116,7 @@ export function displaySingleListing(listing) {
       }
     }
   }
+
+  // Display bids history
+  displayBidHistory(listing.bids);
 }
