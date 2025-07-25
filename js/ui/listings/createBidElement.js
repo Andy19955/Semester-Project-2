@@ -8,15 +8,17 @@
  */
 export function createBidElement(bid, index) {
   const bidElement = document.createElement("div");
-  bidElement.className = `flex justify-between items-center p-3 rounded-lg border transition-colors hover:bg-gray-50 ${
+  bidElement.className = `flex flex-col md:flex-row justify-between items-center p-3 rounded-lg border transition-colors hover:bg-gray-50 ${
     index === 0 ? "bg-green-50 border-green-200" : "bg-white border-gray-200"
   }`;
 
   const bidderInfoContainer = document.createElement("div");
-  bidderInfoContainer.className = "flex flex-col gap-1";
+  bidderInfoContainer.className =
+    "flex flex-col gap-1 w-full text-center md:text-left";
 
   const bidderNameContainer = document.createElement("div");
-  bidderNameContainer.className = "flex items-center gap-2";
+  bidderNameContainer.className =
+    "flex items-center gap-2 justify-center md:justify-start";
 
   const bidderName = document.createElement("span");
   bidderName.className = "font-medium text-gray-800";
