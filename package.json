@@ -28,6 +28,7 @@
     "@types/node": "^24.1.0",
     "eslint": "^9.29.0",
     "globals": "^16.2.0",
+    "jsdom": "^26.1.0",
     "prettier": "^3.6.1",
     "tailwindcss": "^3.4.17",
     "vitest": "^3.2.4"
