@@ -74,14 +74,6 @@ This project uses automated code quality tools:
 - **Prettier** - Code formatting
 - **Husky** - Git hooks for automated checks before commits
 
-**Manual commands:**
-
-```bash
-npx eslint .          # Check for linting errors
-npx eslint . --fix    # Auto-fix issues
-npx prettier --write . # Format all files
-```
-
 ## Testing
 
 ### Unit tests
