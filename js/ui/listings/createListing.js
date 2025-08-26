@@ -142,9 +142,8 @@ export function createListing(listing) {
   )}`;
 
   const listingBids = document.createElement("p");
-  if (listing._count) {
-    listingBids.innerText = `${listing._count.bids} ${listing._count.bids === 1 ? "bid" : "bids"}`;
-  }
+
+  listingBids.innerText = `${listing._count.bids} ${listing._count.bids === 1 ? "bid" : "bids"}`;
 
   listingDescriptionHeader.append(listingTitle, listingStatus);
   listingDescription.append(listingEndsAt, listingBids);

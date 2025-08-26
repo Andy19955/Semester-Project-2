@@ -161,7 +161,7 @@
         <div
           class="flex flex-col gap-4 sm:flex-row justify-between sm:items-center"
         >
-          <h2 class="text-xl font-semibold">Auction activity</h2>
+          <h2 class="text-xl font-semibold">My auctions</h2>
           <a
             href="/create-auction/"
             class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-700 hover:to-purple-700 transition duration-200 w-fit"
@@ -169,171 +169,30 @@
             <i class="fa fa-plus"></i> Create new auction
           </a>
         </div>
-
-        <div class="border-b border-gray-200">
-          <nav class="flex space-x-4" role="tablist">
-            <button
-              id="my-auctions-tab"
-              class="tab-btn py-2 px-1 border-b-2 border-blue-500 text-blue-600 font-medium focus:outline-none focus:text-blue-800"
-              role="tab"
-              aria-selected="true"
-              aria-controls="my-auctions-panel"
-            >
-              My auctions
-              <span
-                id="my-auctions-count"
-                class="ml-2 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm"
-                >0</span
-              >
-            </button>
-            <button
-              id="active-bids-tab"
-              class="tab-btn py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium focus:outline-none focus:text-gray-700"
-              role="tab"
-              aria-selected="false"
-              aria-controls="active-bids-panel"
-            >
-              Active bids
-              <span
-                id="active-bids-count"
-                class="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm"
-                >0</span
-              >
-            </button>
-            <button
-              id="won-auctions-tab"
-              class="tab-btn py-2 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium focus:outline-none focus:text-gray-700"
-              role="tab"
-              aria-selected="false"
-              aria-controls="won-auctions-panel"
-            >
-              Won auctions
-              <span
-                id="won-auctions-count"
-                class="ml-2 bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm"
-                >0</span
-              >
-            </button>
-          </nav>
-        </div>
-
         <div
-          id="my-auctions-panel"
-          class="tab-panel"
-          role="tabpanel"
-          aria-labelledby="my-auctions-tab"
+          id="listings-loader"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          <div
-            id="listings-loader"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
-            </div>
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
-            </div>
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
-            </div>
+          <div class="bg-white rounded shadow-lg p-5 animate-pulse">
+            <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
+            <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
+            <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
           </div>
-          <div
-            id="listings-container"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          ></div>
+          <div class="bg-white rounded shadow-lg p-5 animate-pulse">
+            <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
+            <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
+            <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
+          </div>
+          <div class="bg-white rounded shadow-lg p-5 animate-pulse">
+            <div class="w-full h-56 bg-gray-200 rounded mb-4"></div>
+            <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
+            <div class="h-4 w-1/2 bg-gray-200 rounded"></div>
+          </div>
         </div>
-
         <div
-          id="active-bids-panel"
-          class="tab-panel hidden"
-          role="tabpanel"
-          aria-labelledby="active-bids-tab"
-        >
-          <div
-            id="active-bids-loader"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-48 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded mb-3"></div>
-              <div class="h-3 w-2/3 bg-gray-200 rounded"></div>
-            </div>
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-48 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded mb-3"></div>
-              <div class="h-3 w-2/3 bg-gray-200 rounded"></div>
-            </div>
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-48 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded mb-3"></div>
-              <div class="h-3 w-2/3 bg-gray-200 rounded"></div>
-            </div>
-          </div>
-          <div
-            id="active-bids-container"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          ></div>
-          <div
-            id="no-active-bids"
-            class="hidden text-center py-8 text-gray-500"
-          >
-            <i class="fa fa-gavel fa-3x mb-4 text-gray-300"></i>
-            <p class="text-lg">No active bids</p>
-            <p class="text-sm">Browse auctions to start bidding</p>
-          </div>
-        </div>
-
-        <div
-          id="won-auctions-panel"
-          class="tab-panel hidden"
-          role="tabpanel"
-          aria-labelledby="won-auctions-tab"
-        >
-          <div
-            id="won-auctions-loader"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-48 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded mb-3"></div>
-              <div class="h-3 w-2/3 bg-gray-200 rounded"></div>
-            </div>
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-48 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded mb-3"></div>
-              <div class="h-3 w-2/3 bg-gray-200 rounded"></div>
-            </div>
-            <div class="bg-white rounded shadow-lg p-5 animate-pulse">
-              <div class="w-full h-48 bg-gray-200 rounded mb-4"></div>
-              <div class="h-4 w-3/4 bg-gray-200 rounded mb-2"></div>
-              <div class="h-4 w-1/2 bg-gray-200 rounded mb-3"></div>
-              <div class="h-3 w-2/3 bg-gray-200 rounded"></div>
-            </div>
-          </div>
-          <div
-            id="won-auctions-container"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          ></div>
-          <div
-            id="no-won-auctions"
-            class="hidden text-center py-8 text-gray-500"
-          >
-            <i class="fa fa-trophy fa-3x mb-4 text-gray-300"></i>
-            <p class="text-lg">No won auctions</p>
-            <p class="text-sm">Keep bidding to win your first auction</p>
-          </div>
-        </div>
+          id="listings-container"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
       </section>
     </main>
     <footer class="bg-gray-800 text-white py-4">
