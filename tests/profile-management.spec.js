@@ -89,7 +89,7 @@ test.describe("Profile Management", () => {
     await page.waitForSelector("#avatarUrl");
 
     const newAvatarUrl =
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150";
+      "https://images.unsplash.com/photo-1756187793625-4a29fef1f4f8?q=80&w=150";
     await page.locator("#avatarUrl").fill(newAvatarUrl);
     await page.locator("#submit-edit-profile-form").click();
 
