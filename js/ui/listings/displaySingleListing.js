@@ -5,7 +5,8 @@ import { displayBidHistory } from "./displayBidHistory.js";
 
 /**
  * Displays a single auction listing on the listing detail page.
- * Populates listing image, title, description, end date, bid count, and current highest bid.
+ * Populates main image with thumbnail gallery, title, description, end date, bid count, and current highest bid.
+ * Creates interactive thumbnail gallery for multiple images with click-to-switch functionality.
  * Sets minimum bid amount for the bidding form and handles proper grammar for credit/credits.
  * Shows or hides UI elements based on whether bids exist and user permissions.
  * Hides bidding container if user is the seller. Displays success message if user has highest bid.
@@ -26,12 +27,13 @@ import { displayBidHistory } from "./displayBidHistory.js";
  * @param {number} listing.bids[].amount - The bid amount in credits.
  * @param {Object} listing.bids[].bidder - The bidder object with name property.
  * @param {string} listing.bids[].bidder.name - The name of the bidder.
-
  */
 export function displaySingleListing(listing) {
   document.title = `${listing.title} - The Auction Hub`;
 
   const listingImage = document.querySelector("#listing-image");
+  const thumbnailsContainer = document.querySelector("#image-thumbnails");
+
   if (listing.media && listing.media.length > 0 && listing.media[0]?.url) {
     listingImage.alt = listing.media[0]?.alt || fallBackImageAlt;
     listingImage.src = listing.media[0].url;
@@ -40,9 +42,56 @@ export function displaySingleListing(listing) {
       listingImage.alt = fallBackImageAlt;
       listingImage.onerror = null;
     };
+
+    if (listing.media.length > 1) {
+      thumbnailsContainer.style.display = "grid";
+      thumbnailsContainer.innerHTML = "";
+
+      listing.media.forEach((media, index) => {
+        if (media?.url) {
+          const thumbnail = document.createElement("div");
+          thumbnail.className = `relative cursor-pointer border-2 rounded-lg overflow-hidden ${
+            index === 0
+              ? "border-blue-500"
+              : "border-gray-200 hover:border-blue-300"
+          }`;
+
+          const img = document.createElement("img");
+          img.src = media.url;
+          img.alt = media.alt || `${listing.title} image ${index + 1}`;
+          img.className = "w-full h-16 object-cover";
+          img.onerror = function () {
+            this.src = fallbackImage;
+          };
+
+          thumbnail.appendChild(img);
+
+          thumbnail.addEventListener("click", () => {
+            listingImage.src = media.url;
+            listingImage.alt =
+              media.alt || `${listing.title} image ${index + 1}`;
+
+            thumbnailsContainer
+              .querySelectorAll(".border-blue-500")
+              .forEach((el) => {
+                el.className = el.className.replace(
+                  "border-blue-500",
+                  "border-gray-200 hover:border-blue-300",
+                );
+              });
+            thumbnail.className = `relative cursor-pointer border-2 rounded-lg overflow-hidden border-blue-500`;
+          });
+
+          thumbnailsContainer.appendChild(thumbnail);
+        }
+      });
+    } else {
+      thumbnailsContainer.style.display = "none";
+    }
   } else {
     listingImage.alt = fallBackImageAlt;
     listingImage.src = fallbackImage;
+    thumbnailsContainer.style.display = "none";
   }
 
   const listingTitle = document.querySelector("#listing-title");

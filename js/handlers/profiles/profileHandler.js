@@ -3,6 +3,7 @@ import { displayMessage } from "../../ui/shared/displayMessage.js";
 import { fetchProfile } from "../../api/profiles/fetchProfile.js";
 import { displayProfile } from "../../ui/profiles/displayProfile.js";
 import { profileListingsHandler } from "./profileListingsHandler.js";
+import { setupProfileTabs } from "../../ui/profiles/profileTabs.js";
 
 /**
  * Handles fetching and displaying the profile and the user's auction listings.
@@ -17,6 +18,7 @@ export async function profileHandler() {
   try {
     const profile = await fetchProfile(name);
     displayProfile(profile.data);
+    setupProfileTabs(profile.data);
     profileListingsHandler(name, 1);
   } catch (error) {
     displayMessage("#messageContainer", "error", error.message);
