@@ -98,7 +98,13 @@
     <main class="container mx-auto flex flex-col flex-1 gap-5 p-4">
       <h1 class="text-xl font-bold text-gray-800">Your profile</h1>
       <div id="messageContainer" class="hidden"></div>
-      <section>
+      <section class="flex flex-col gap-4">
+        <div
+          id="profile-banner-loader"
+          class="w-full h-40 md:h-56 rounded-lg shadow-lg mb-6 overflow-hidden bg-gray-200 animate-pulse flex items-center justify-center"
+        >
+          <div class="w-full h-full bg-gray-300"></div>
+        </div>
         <div
           id="profile-loader"
           class="flex flex-col md:flex-row gap-5 bg-white rounded shadow-lg p-5 animate-pulse"
@@ -112,21 +118,30 @@
           </div>
         </div>
         <div
+          id="profile-banner-container"
+          class="hidden bg-white rounded shadow-lg w-full h-56"
+        >
+          <img
+            id="profile-banner"
+            src="/images/no-image.jpg"
+            alt="Gray circle with text 'No image'"
+            class="w-full h-full object-cover rounded"
+          />
+        </div>
+        <div
           id="profile-container"
           class="hidden flex-col md:flex-row gap-5 bg-white rounded shadow-lg p-5"
         >
           <img
             id="profile-avatar"
-            src="https://images.unsplash.com/photo-1750779940886-edfa73b5c5c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Profile Picture"
+            src="/images/no-image.jpg"
+            alt="Gray circle with text 'No image'"
             class="w-56 h-56 rounded-lg object-cover mx-auto md:mx-0"
           />
           <div class="flex-1 flex flex-col gap-3 justify-between">
             <div class="flex-1">
-              <h2 id="profile-name" class="font-semibold text-2xl">
-                Your name here
-              </h2>
-              <p id="profile-bio">This is my temp bio.</p>
+              <h2 id="profile-name" class="font-semibold text-2xl"></h2>
+              <p id="profile-bio"></p>
             </div>
             <a
               href="./edit-profile/"
