@@ -114,7 +114,6 @@ export function displaySingleListing(listing) {
 
   const editListingButton = document.querySelector("#edit-listing-button");
 
-  // Check if auction has ended
   if (endTime <= currentTime) {
     bidContainer.classList.add("hidden");
     displayMessage(
@@ -166,6 +165,5 @@ export function displaySingleListing(listing) {
     }
   }
 
-  // Display bids history
   displayBidHistory(listing.bids);
 }

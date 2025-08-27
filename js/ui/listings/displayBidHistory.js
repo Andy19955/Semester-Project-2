@@ -31,7 +31,6 @@ export function displayBidHistory(bids) {
     sortedBids.forEach((bid, index) => {
       const bidElement = createBidElement(bid, index, sortedBids);
       bidsList.append(bidElement);
-      console.log(bidElement);
     });
 
     bidsList.classList.remove("hidden");

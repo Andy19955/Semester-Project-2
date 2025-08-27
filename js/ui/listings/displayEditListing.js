@@ -40,7 +40,7 @@ export function displayEditListing(listing) {
       listing.media.forEach((media, index) => {
         if (media?.url) {
           const thumbnail = document.createElement("div");
-          thumbnail.className = `relative cursor-pointer border-2 rounded-lg overflow-hidden ${
+          thumbnail.className = `relative cursor-pointer border-2 rounded-lg ${
             index === 0
               ? "border-blue-500"
               : "border-gray-200 hover:border-blue-300"
@@ -69,7 +69,7 @@ export function displayEditListing(listing) {
                   "border-gray-200 hover:border-blue-300",
                 );
               });
-            thumbnail.className = `relative cursor-pointer border-2 rounded-lg overflow-hidden border-blue-500`;
+            thumbnail.className = `relative cursor-pointer border-2 rounded-lg border-blue-500`;
           });
 
           thumbnailsContainer.appendChild(thumbnail);
@@ -79,21 +79,56 @@ export function displayEditListing(listing) {
       thumbnailsContainer.style.display = "none";
     }
 
-    const firstInput = imageContainer.querySelector("input[name='imageUrl']");
-    firstInput.value = listing.media[0]?.url || "";
+    const firstInputUrl = imageContainer.querySelector(
+      "input[name='imageUrl']",
+    );
+    firstInputUrl.value = listing.media[0]?.url || "";
+
+    const firstInputAlt = imageContainer.querySelector(
+      "input[name='imageAlt']",
+    );
+    firstInputAlt.value = listing.media[0]?.alt || "";
 
     listing.media.slice(1).forEach((media) => {
       if (media?.url) {
         const inputGroup = document.createElement("div");
-        inputGroup.className = "image-url-input-group flex gap-2";
+        inputGroup.className = "image-url-input-group flex gap-2 items-end";
 
-        const input = document.createElement("input");
-        input.type = "url";
-        input.name = "imageUrl";
-        input.placeholder = "Enter image URL";
-        input.className =
+        const urlGroup = document.createElement("div");
+        urlGroup.className = "flex flex-col gap-2 flex-1";
+        const urlLabel = document.createElement("label");
+        urlLabel.textContent = "Image URL";
+        urlLabel.className = "font-semibold";
+        urlLabel.htmlFor =
+          "image-url-" + Math.random().toString(36).slice(2, 10);
+        const urlInput = document.createElement("input");
+        urlInput.type = "url";
+        urlInput.name = "imageUrl";
+        urlInput.placeholder = "Enter image URL";
+        urlInput.className =
           "flex-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500";
-        input.value = media.url;
+        urlInput.id = urlLabel.htmlFor;
+        urlInput.value = media.url;
+        urlGroup.appendChild(urlLabel);
+        urlGroup.appendChild(urlInput);
+
+        const altGroup = document.createElement("div");
+        altGroup.className = "flex flex-col gap-2 flex-1";
+        const altLabel = document.createElement("label");
+        altLabel.textContent = "Image Alt";
+        altLabel.className = "font-semibold";
+        altLabel.htmlFor =
+          "image-alt-" + Math.random().toString(36).slice(2, 10);
+        const altInput = document.createElement("input");
+        altInput.type = "text";
+        altInput.name = "imageAlt";
+        altInput.placeholder = "Enter image alt text";
+        altInput.className =
+          "border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500";
+        altInput.id = altLabel.htmlFor;
+        altInput.value = media.alt || "";
+        altGroup.appendChild(altLabel);
+        altGroup.appendChild(altInput);
 
         const removeBtn = document.createElement("button");
         removeBtn.type = "button";
@@ -105,7 +140,8 @@ export function displayEditListing(listing) {
         icon.className = "fa fa-trash";
         removeBtn.appendChild(icon);
 
-        inputGroup.appendChild(input);
+        inputGroup.appendChild(urlGroup);
+        inputGroup.appendChild(altGroup);
         inputGroup.appendChild(removeBtn);
         imageContainer.appendChild(inputGroup);
       }

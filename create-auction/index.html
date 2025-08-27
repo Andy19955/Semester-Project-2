@@ -146,18 +146,32 @@
                 ></textarea>
               </div>
               <div class="flex flex-col gap-1">
-                <label for="first-image-url" class="font-semibold"
-                  >Image URLs</label
-                >
                 <div id="image-url-container" class="flex flex-col gap-2">
-                  <div class="image-url-input-group flex gap-2">
-                    <input
-                      type="url"
-                      id="first-image-url"
-                      name="imageUrl"
-                      placeholder="Enter image URL"
-                      class="flex-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                  <div class="image-url-input-group flex gap-2 items-end">
+                    <div class="flex flex-col gap-2 flex-1">
+                      <label for="first-image-url" class="font-semibold"
+                        >Image URL</label
+                      >
+                      <input
+                        type="url"
+                        id="first-image-url"
+                        name="imageUrl"
+                        placeholder="Enter image URL"
+                        class="flex-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-2 flex-1">
+                      <label for="first-image-alt" class="font-semibold"
+                        >Image Alt</label
+                      >
+                      <input
+                        type="text"
+                        id="first-image-alt"
+                        name="imageAlt"
+                        placeholder="Enter image alt text"
+                        class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
                     <button
                       type="button"
                       class="remove-image-btn hidden text-black px-3 py-2 rounded-lg hover:text-red-600 transition duration-200"

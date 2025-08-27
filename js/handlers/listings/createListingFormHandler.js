@@ -21,6 +21,8 @@ export async function createListingFormHandler(event) {
     .getAll("imageUrl")
     .filter((url) => url.trim() !== "");
 
+  const imageAlts = formData.getAll("imageAlt");
+
   const data = {
     title: formData.get("title"),
     description: formData.get("description"),
@@ -63,7 +65,7 @@ export async function createListingFormHandler(event) {
   if (imageUrls.length > 0) {
     data.media = imageUrls.map((url, index) => ({
       url: url,
-      alt: `${data.title} listing image ${index + 1}`,
+      alt: imageAlts[index] || `${data.title} listing image ${index + 1}`,
     }));
   }
 

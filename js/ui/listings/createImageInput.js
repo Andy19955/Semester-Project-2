@@ -9,14 +9,39 @@
  */
 export function createImageInput({ onInputChange, onRemove }) {
   const inputGroup = document.createElement("div");
-  inputGroup.className = "image-url-input-group flex gap-2";
+  inputGroup.className = "image-url-input-group flex gap-2 items-end";
 
-  const input = document.createElement("input");
-  input.type = "url";
-  input.name = "imageUrl";
-  input.placeholder = "Enter image URL";
-  input.className =
+  const urlGroup = document.createElement("div");
+  urlGroup.className = "flex flex-col gap-2 flex-1";
+  const urlLabel = document.createElement("label");
+  urlLabel.textContent = "Image URL";
+  urlLabel.className = "font-semibold";
+  urlLabel.htmlFor = "image-url-" + Math.random().toString(36).slice(2, 10);
+  const urlInput = document.createElement("input");
+  urlInput.type = "url";
+  urlInput.name = "imageUrl";
+  urlInput.placeholder = "Enter image URL";
+  urlInput.className =
     "flex-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500";
+  urlInput.id = urlLabel.htmlFor;
+  urlGroup.appendChild(urlLabel);
+  urlGroup.appendChild(urlInput);
+
+  const altGroup = document.createElement("div");
+  altGroup.className = "flex flex-col gap-2 flex-1";
+  const altLabel = document.createElement("label");
+  altLabel.textContent = "Image Alt";
+  altLabel.className = "font-semibold";
+  altLabel.htmlFor = "image-alt-" + Math.random().toString(36).slice(2, 10);
+  const altInput = document.createElement("input");
+  altInput.type = "text";
+  altInput.name = "imageAlt";
+  altInput.placeholder = "Enter image alt text";
+  altInput.className =
+    "border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500";
+  altInput.id = altLabel.htmlFor;
+  altGroup.appendChild(altLabel);
+  altGroup.appendChild(altInput);
 
   const removeBtn = document.createElement("button");
   removeBtn.type = "button";
@@ -28,11 +53,12 @@ export function createImageInput({ onInputChange, onRemove }) {
   icon.className = "fa fa-trash";
   removeBtn.appendChild(icon);
 
-  inputGroup.appendChild(input);
+  inputGroup.appendChild(urlGroup);
+  inputGroup.appendChild(altGroup);
   inputGroup.appendChild(removeBtn);
 
   if (onInputChange) {
-    input.addEventListener("input", onInputChange);
+    urlInput.addEventListener("input", onInputChange);
   }
 
   if (onRemove) {
