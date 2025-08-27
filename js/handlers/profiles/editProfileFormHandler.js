@@ -32,10 +32,17 @@ export async function editProfileFormHandler(event) {
   if (data.avatarUrl) {
     data.avatar = {
       url: data.avatarUrl,
-      alt: `${name}'s profile picture`,
+      alt: data.avatarAlt || `${name}'s profile picture`,
     };
-
     delete data.avatarUrl;
+  }
+
+  if (data.bannerUrl) {
+    data.banner = {
+      url: data.bannerUrl,
+      alt: data.bannerAlt || `${name}'s banner image`,
+    };
+    delete data.bannerUrl;
   }
 
   try {
@@ -45,7 +52,6 @@ export async function editProfileFormHandler(event) {
       "<i class='fa fa-spinner fa-spin mr-2'></i>Saving profile...";
 
     await editProfileFormApi(data, name);
-
     window.location.href = "../";
   } catch (error) {
     displayMessage("#messageContainer", "error", error.message);

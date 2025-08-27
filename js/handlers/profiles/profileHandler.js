@@ -12,6 +12,7 @@ import { setupProfileTabs } from "../../ui/profiles/profileTabs.js";
  * profileHandler();
  */
 export async function profileHandler() {
+  const profileBannerLoader = document.querySelector("#profile-banner-loader");
   const profileLoader = document.querySelector("#profile-loader");
   const name = getName();
 
@@ -23,6 +24,7 @@ export async function profileHandler() {
   } catch (error) {
     displayMessage("#messageContainer", "error", error.message);
   } finally {
+    profileBannerLoader.classList.add("hidden");
     profileLoader.classList.add("hidden");
   }
 }

@@ -6,6 +6,9 @@ import { getApiKey, getToken } from "../../helpers/storage.js";
  *
  * @param {Object} profileData - Profile data to update
  * @param {string} [profileData.bio] - User's biography
+ * @param {Object} [profileData.banner] - User's banner information
+ * @param {string} [profileData.banner.url] - URL of the banner image
+ * @param {string} [profileData.banner.alt] - Alt text for the banner image
  * @param {Object} [profileData.avatar] - User's avatar information
  * @param {string} [profileData.avatar.url] - URL of the avatar image
  * @param {string} [profileData.avatar.alt] - Alt text for the avatar image
@@ -16,6 +19,10 @@ import { getApiKey, getToken } from "../../helpers/storage.js";
  * @example
  * const profileData = {
  *   bio: "Updated bio text",
+ *   banner: {
+ *     url: "https://example.com/banner.jpg",
+ *     alt: "User's banner"
+ *   },
  *   avatar: {
  *     url: "https://example.com/avatar.jpg",
  *     alt: "User's avatar"
