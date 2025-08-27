@@ -9,7 +9,8 @@
  */
 export function createImageInput({ onInputChange, onRemove }) {
   const inputGroup = document.createElement("div");
-  inputGroup.className = "image-url-input-group flex gap-2 items-end";
+  inputGroup.className =
+    "image-url-input-group flex flex-col md:flex-row gap-2 md:items-end";
 
   const urlGroup = document.createElement("div");
   urlGroup.className = "flex flex-col gap-2 flex-1";
