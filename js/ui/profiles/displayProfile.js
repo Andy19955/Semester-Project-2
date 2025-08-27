@@ -56,6 +56,11 @@ export function displayProfile(profile) {
   const profileWins = document.querySelector("#profile-wins");
   profileWins.innerText = profile._count.wins;
 
+  const profileBannerContainer = document.querySelector(
+    "#profile-banner-container",
+  );
+  profileBannerContainer.classList.remove("hidden");
+
   const profileContainer = document.querySelector("#profile-container");
   profileContainer.classList.add("flex");
   profileContainer.classList.remove("hidden");
