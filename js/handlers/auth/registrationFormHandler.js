@@ -11,7 +11,7 @@ import { displayMessage } from "../../ui/shared/displayMessage.js";
  *
  * @example
  * // Attach to registration form
- * const form = document.getElementById('registration-form');
+ * const form = document.querySelector('#registration-form');
  * form.addEventListener('submit', registrationFormHandler);
  */
 export async function registrationFormHandler(event) {

@@ -13,7 +13,7 @@ import { createApiKey } from "../../api/auth/createApiKey.js";
  *
  * @example
  * // Attach to login form
- * const form = document.getElementById('login-form');
+ * const form = document.querySelector('#login-form');
  * form.addEventListener('submit', loginFormHandler);
  */
 export async function loginFormHandler(event) {

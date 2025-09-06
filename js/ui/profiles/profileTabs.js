@@ -21,10 +21,10 @@ export function setupProfileTabs(profileData = null) {
 
     try {
       if (profileData && profileData._count && profileData._count.listings) {
-        document.getElementById("my-auctions-count").textContent =
+        document.querySelector("#my-auctions-count").textContent =
           profileData._count.listings.toString();
       } else {
-        document.getElementById("my-auctions-count").textContent = "0";
+        document.querySelector("#my-auctions-count").textContent = "0";
       }
 
       const bids = await fetchProfileBids(name, 1);
@@ -36,28 +36,28 @@ export function setupProfileTabs(profileData = null) {
             bid.listing.id &&
             new Date(bid.listing.endsAt) > currentTime,
         ).length;
-        document.getElementById("active-bids-count").textContent =
+        document.querySelector("#active-bids-count").textContent =
           activeBidsCount.toString();
       } else {
-        document.getElementById("active-bids-count").textContent = "0";
+        document.querySelector("#active-bids-count").textContent = "0";
       }
 
       if (profileData && profileData._count && profileData._count.wins) {
-        document.getElementById("won-auctions-count").textContent =
+        document.querySelector("#won-auctions-count").textContent =
           profileData._count.wins.toString();
       } else {
         const wins = await fetchProfileWins(name, 1);
         const wonAuctionsCount = wins.data
           ? wins.data.filter((win) => win.listing && win.listing.id).length
           : 0;
-        document.getElementById("won-auctions-count").textContent =
+        document.querySelector("#won-auctions-count").textContent =
           wonAuctionsCount.toString();
       }
     } catch (error) {
       console.error("Error updating tab counters:", error);
-      document.getElementById("my-auctions-count").textContent = "0";
-      document.getElementById("active-bids-count").textContent = "0";
-      document.getElementById("won-auctions-count").textContent = "0";
+      document.querySelector("#my-auctions-count").textContent = "0";
+      document.querySelector("#active-bids-count").textContent = "0";
+      document.querySelector("#won-auctions-count").textContent = "0";
     }
   }
 
@@ -76,7 +76,7 @@ export function setupProfileTabs(profileData = null) {
       panel.classList.add("hidden");
     });
 
-    const activeTab = document.getElementById(tabId);
+    const activeTab = document.querySelector(`#${tabId}`);
     if (activeTab) {
       activeTab.classList.remove("border-transparent", "text-gray-500");
       activeTab.classList.add("border-blue-500", "text-blue-600");
@@ -84,7 +84,7 @@ export function setupProfileTabs(profileData = null) {
     }
 
     const panelId = activeTab.getAttribute("aria-controls");
-    const activePanel = document.getElementById(panelId);
+    const activePanel = document.querySelector(`#${panelId}`);
     if (activePanel) {
       activePanel.classList.remove("hidden");
     }

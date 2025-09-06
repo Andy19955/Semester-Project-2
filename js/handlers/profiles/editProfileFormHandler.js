@@ -13,7 +13,7 @@ import { getName } from "../../helpers/storage.js";
  *
  * @example
  * // Attach to edit profile form
- * const form = document.getElementById('edit-profile-form');
+ * const form = document.querySelector('#edit-profile-form');
  * form.addEventListener('submit', editProfileFormHandler);
  */
 export async function editProfileFormHandler(event) {
