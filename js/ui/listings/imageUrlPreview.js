@@ -23,6 +23,10 @@ export function imageUrlPreview() {
     if (imageUrls.length > 0 && imageUrls[0]) {
       mainImagePreview.src = imageUrls[0];
       mainImagePreview.alt = "Main auction image preview";
+      mainImagePreview.onerror = function () {
+        this.src = "/images/no-image.jpg";
+        this.alt = "Gray circle with text 'No image'";
+      };
     } else {
       mainImagePreview.src = "/images/no-image.jpg";
       mainImagePreview.alt = "Gray circle with text 'No image'";
@@ -78,7 +82,6 @@ export function imageUrlPreview() {
     const inputGroups = imageContainer.querySelectorAll(
       ".image-url-input-group",
     );
-
     inputGroups.forEach((group, index) => {
       const input = group.querySelector("input[name='imageUrl']");
       input.value = imageUrls[index] || "";
@@ -90,12 +93,14 @@ export function imageUrlPreview() {
    *
    * @param {Event} event - The input event containing the changed URL value
    */
-  function handleImageInputChange(event) {
-    const input = event.target;
-    const inputGroup = input.closest(".image-url-input-group");
-    const index = Array.from(imageContainer.children).indexOf(inputGroup);
-
-    imageUrls[index] = input.value.trim();
+  function handleImageInputChange() {
+    const inputGroups = imageContainer.querySelectorAll(
+      ".image-url-input-group",
+    );
+    imageUrls = Array.from(inputGroups).map((group) => {
+      const input = group.querySelector("input[name='imageUrl']");
+      return input.value.trim();
+    });
     updateImagePreviews();
   }
 
@@ -158,11 +163,22 @@ export function imageUrlPreview() {
 
   if (firstRemoveBtn) {
     firstRemoveBtn.addEventListener("click", () => {
-      imageUrls.splice(0, 1);
-      updateImagePreviews();
-      updateInputFields();
-      updateRemoveButtons();
-      updateAddButton();
+      const inputGroups = imageContainer.querySelectorAll(
+        ".image-url-input-group",
+      );
+      if (inputGroups.length > 0) {
+        inputGroups[0].remove();
+        const updatedGroups = imageContainer.querySelectorAll(
+          ".image-url-input-group",
+        );
+        imageUrls = Array.from(updatedGroups).map((group) => {
+          const input = group.querySelector("input[name='imageUrl']");
+          return input.value.trim();
+        });
+        updateImagePreviews();
+        updateRemoveButtons();
+        updateAddButton();
+      }
     });
   }
 
@@ -177,9 +193,14 @@ export function imageUrlPreview() {
       const newInput = createImageInput({
         onInputChange: handleImageInputChange,
         onRemove: (inputGroup) => {
-          const index = Array.from(imageContainer.children).indexOf(inputGroup);
-          imageUrls.splice(index, 1);
           inputGroup.remove();
+          const updatedGroups = imageContainer.querySelectorAll(
+            ".image-url-input-group",
+          );
+          imageUrls = Array.from(updatedGroups).map((group) => {
+            const input = group.querySelector("input[name='imageUrl']");
+            return input.value.trim();
+          });
           updateImagePreviews();
           updateRemoveButtons();
           updateAddButton();
@@ -216,9 +237,14 @@ export function imageUrlPreview() {
     if (!btn.hasAttribute("data-preview-listener")) {
       btn.addEventListener("click", () => {
         const inputGroup = btn.closest(".image-url-input-group");
-        const index = Array.from(imageContainer.children).indexOf(inputGroup);
-        imageUrls.splice(index, 1);
         inputGroup.remove();
+        const updatedGroups = imageContainer.querySelectorAll(
+          ".image-url-input-group",
+        );
+        imageUrls = Array.from(updatedGroups).map((group) => {
+          const input = group.querySelector("input[name='imageUrl']");
+          return input.value.trim();
+        });
         updateImagePreviews();
         updateRemoveButtons();
         updateAddButton();

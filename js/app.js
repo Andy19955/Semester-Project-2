@@ -90,7 +90,6 @@ function router() {
       toggleMenu();
       logoutButtonListener();
       editListingHandler();
-      imageUrlPreview();
       editListingFormListener();
       deleteListingButtonListener();
       break;
