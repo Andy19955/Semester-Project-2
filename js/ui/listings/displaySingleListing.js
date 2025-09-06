@@ -2,6 +2,7 @@ import { fallbackImage, fallBackImageAlt } from "../../constants/constants.js";
 import { getName } from "../../helpers/storage.js";
 import { displayMessage } from "../shared/displayMessage.js";
 import { displayBidHistory } from "./displayBidHistory.js";
+import { countdown } from "./countdown.js";
 
 /**
  * Displays a single auction listing on the listing detail page.
@@ -10,6 +11,7 @@ import { displayBidHistory } from "./displayBidHistory.js";
  * Sets minimum bid amount for the bidding form and handles proper grammar for credit/credits.
  * Shows or hides UI elements based on whether bids exist and user permissions.
  * Hides bidding container if user is the seller. Displays success message if user has highest bid.
+ * Initializes countdown timer for auction end date.
  *
  * @param {Object} listing - The listing object to display.
  * @param {string} listing.id - The unique ID of the listing.
@@ -101,6 +103,9 @@ export function displaySingleListing(listing) {
   listingDescription.textContent =
     listing.description || "No description available.";
 
+  const endDateCountdownElement = document.querySelector("#end-date-countdown");
+  endDateCountdownElement.setAttribute("datetime", listing.endsAt);
+
   const endDateElement = document.querySelector("#listing-end-date");
   endDateElement.textContent = new Date(listing.endsAt).toLocaleString();
   endDateElement.setAttribute("datetime", listing.endsAt);
@@ -166,4 +171,5 @@ export function displaySingleListing(listing) {
   }
 
   displayBidHistory(listing.bids);
+  countdown();
 }
