@@ -20,6 +20,7 @@ import { setupProfileInfiniteScroll } from "../../helpers/profileInfiniteScroll.
 export async function profileListingsHandler(name, page) {
   const listingsContainer = document.querySelector("#listings-container");
   const listingsLoader = document.querySelector("#listings-loader");
+  const noListingsContainer = document.querySelector("#no-listings-container");
 
   let listingsCount = 0;
   let isLastPage = true;
@@ -58,36 +59,12 @@ export async function profileListingsHandler(name, page) {
         setupProfileInfiniteScroll(name, isLastPage);
       });
     } else {
-      listingsContainer.innerHTML = "";
-      listingsContainer.className =
-        "flex items-center justify-center py-12 min-h-[300px]";
-
-      const noListingsMessage = document.createElement("div");
-      noListingsMessage.className = "text-center text-gray-500";
-      noListingsMessage.innerHTML = `
-        <i class="fa fa-inbox text-6xl mb-6 block text-gray-400"></i>
-        <h3 class="text-xl font-semibold text-gray-700 mb-2">No listings found</h3>
-        <p class="text-gray-500">You haven't created any listings yet.</p>
-      `;
-
-      listingsContainer.appendChild(noListingsMessage);
+      noListingsContainer.classList.remove("hidden");
     }
   } catch (error) {
     listingsLoader?.classList.add("hidden");
     displayMessage("#messageContainer", "error", error.message);
 
-    listingsContainer.innerHTML = "";
-    listingsContainer.className =
-      "flex items-center justify-center py-12 min-h-[300px]";
-
-    const errorMessage = document.createElement("div");
-    errorMessage.className = "text-center text-red-500";
-    errorMessage.innerHTML = `
-      <i class="fa fa-exclamation-triangle text-4xl mb-4 block"></i>
-      <h3 class="text-lg font-semibold mb-2">Failed to load listings</h3>
-      <p>Please try again later.</p>
-    `;
-
-    listingsContainer.appendChild(errorMessage);
+    noListingsContainer.classList.remove("hidden");
   }
 }

@@ -54,7 +54,7 @@ export function setupProfileTabs(profileData = null) {
           wonAuctionsCount.toString();
       }
     } catch (error) {
-      console.error("Error updating tab counters:", error);
+      displayMessage("#messageContainer", "error", error.message);
       document.querySelector("#my-auctions-count").textContent = "0";
       document.querySelector("#active-bids-count").textContent = "0";
       document.querySelector("#won-auctions-count").textContent = "0";
