@@ -42,7 +42,6 @@ export function activeListingsInfiniteScroll() {
         currentListingsPage++;
         const listings = await fetchActiveListings(40, currentListingsPage);
 
-        console.log(listings);
         if (listings.data.length === 0) {
           hasMoreListings = false;
         } else {
