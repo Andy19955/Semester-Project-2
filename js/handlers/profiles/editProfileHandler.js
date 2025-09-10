@@ -16,7 +16,6 @@ import { displayProfileEditor } from "../../ui/profiles/displayProfileEditor.js"
  * editProfileHandler();
  */
 export async function editProfileHandler() {
-  const profileLoader = document.querySelector("#profile-loader");
   const name = getName();
 
   try {
@@ -24,7 +23,5 @@ export async function editProfileHandler() {
     displayProfileEditor(profile.data);
   } catch (error) {
     displayMessage("#messageContainer", "error", error.message);
-  } finally {
-    profileLoader.classList.add("hidden");
   }
 }
