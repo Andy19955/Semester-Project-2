@@ -49,6 +49,23 @@ cd Semester-Project-2
 npm install
 ```
 
+### Configuration
+
+You must create a `js/constants/config.js` file to store your API key for local development. This file is required for the app to run locally and should not be committed to version control.
+
+Create the file:
+
+```js
+// js/constants/config.js
+export const apiKey = "your-api-key-here";
+```
+
+**Note:**
+
+- Do not commit your real API key to public repositories.
+- Use `config.example.js` as a template for your config file.
+- In production, the API key is loaded from environment variables via Netlify serverless functions.
+
 ### Running the Project
 
 **Development mode (with Tailwind CSS watching):**
