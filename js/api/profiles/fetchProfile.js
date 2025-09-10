@@ -1,6 +1,6 @@
 import { profileUrl } from "../../constants/apiUrls.js";
 import { getToken } from "../../helpers/storage.js";
-import { getKey } from "../../functions/getKey.js";
+import { getKey } from "/netlify/functions/getKey.js";
 
 /**
  * Fetches user profile data from API.
