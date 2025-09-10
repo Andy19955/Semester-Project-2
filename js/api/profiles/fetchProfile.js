@@ -1,5 +1,6 @@
 import { profileUrl } from "../../constants/apiUrls.js";
-import { getApiKey, getToken } from "../../helpers/storage.js";
+import { getToken } from "../../helpers/storage.js";
+import { getKey } from "../../functions/getKey.js";
 
 /**
  * Fetches user profile data from API.
@@ -18,7 +19,7 @@ export async function fetchProfile(name) {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken()}`,
-      "X-Noroff-API-Key": getApiKey(),
+      "X-Noroff-API-Key": await getKey(),
     },
   };
 
