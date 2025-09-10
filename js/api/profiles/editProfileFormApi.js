@@ -1,5 +1,6 @@
 import { profileUrl } from "../../constants/apiUrls.js";
-import { getApiKey, getToken } from "../../helpers/storage.js";
+import { getKey } from "../../helpers/getKey.js";
+import { getToken } from "../../helpers/storage.js";
 
 /**
  * Updates user profile information via API.
@@ -36,7 +37,7 @@ export async function editProfileFormApi(profileData, name) {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken()}`,
-      "X-Noroff-API-Key": getApiKey(),
+      "X-Noroff-API-Key": await getKey(),
     },
     body: JSON.stringify(profileData),
   };
