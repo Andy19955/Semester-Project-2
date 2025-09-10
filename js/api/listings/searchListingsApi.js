@@ -1,7 +1,5 @@
 import { listingsUrl } from "../../constants/apiUrls.js";
 import { maxListings } from "../../constants/constants.js";
-import { getToken } from "../../helpers/storage.js";
-import { getKey } from "../../helpers/getKey.js";
 
 /**
  * Searches for auction listings based on the provided search query and page number.
@@ -23,8 +21,6 @@ export async function searchListingsApi(formData, listingsPage) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${getToken()}`,
-      "X-Noroff-API-Key": await getKey(),
     },
   };
   const response = await fetch(
