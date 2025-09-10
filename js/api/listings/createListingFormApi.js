@@ -1,5 +1,6 @@
 import { listingsUrl } from "../../constants/apiUrls.js";
-import { getApiKey, getToken } from "../../helpers/storage.js";
+import { getToken } from "../../helpers/storage.js";
+import { getKey } from "../../helpers/getKey.js";
 
 /**
  * Creates a new auction listing via API.
@@ -27,7 +28,7 @@ export async function createListingFormApi(listingData) {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken()}`,
-      "X-Noroff-API-Key": getApiKey(),
+      "X-Noroff-API-Key": await getKey(),
     },
     body: JSON.stringify(listingData),
   };

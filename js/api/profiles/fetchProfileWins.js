@@ -1,6 +1,7 @@
 import { profileUrl } from "../../constants/apiUrls.js";
 import { maxListings } from "../../constants/constants.js";
-import { getApiKey, getToken } from "../../helpers/storage.js";
+import { getToken } from "../../helpers/storage.js";
+import { getKey } from "../../helpers/getKey.js";
 
 /**
  * Fetches the won auctions for a given profile name.
@@ -21,7 +22,7 @@ export async function fetchProfileWins(name, page) {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken()}`,
-      "X-Noroff-API-Key": getApiKey(),
+      "X-Noroff-API-Key": await getKey(),
     },
   };
 
