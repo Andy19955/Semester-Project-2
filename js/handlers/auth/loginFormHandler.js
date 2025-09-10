@@ -1,7 +1,6 @@
 import { loginFormApi } from "../../api/auth/loginFormApi.js";
 import { displayMessage } from "../../ui/shared/displayMessage.js";
-import { saveToken, saveName, saveApiKey } from "../../helpers/storage.js";
-import { createApiKey } from "../../api/auth/createApiKey.js";
+import { saveToken, saveName } from "../../helpers/storage.js";
 
 /**
  * Handles login form submission.
@@ -46,8 +45,6 @@ export async function loginFormHandler(event) {
     saveToken(loginResponse.data.accessToken);
     saveName(loginResponse.data.name);
 
-    const apiKey = await createApiKey();
-    saveApiKey(apiKey.data.key);
     window.location.href = "/profile/";
   } catch (error) {
     displayMessage("#messageContainer", "error", error.message);

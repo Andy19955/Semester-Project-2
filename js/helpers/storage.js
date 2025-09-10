@@ -1,6 +1,5 @@
 const tokenKey = "token";
 const nameKey = "name";
-const apiKey = "key";
 
 /**
  * Saves the token to local storage.
@@ -51,31 +50,7 @@ export function getName() {
 }
 
 /**
- * Saves the API key to local storage.
- *
- * @param {string} key - The API key to save.
- *
- * @example
- * saveApiKey("your-api-key-here");
- */
-export function saveApiKey(key) {
-  localStorage.setItem(apiKey, key);
-}
-
-/**
- * Retrieves the API key from local storage.
- *
- * @returns {string|null} - The API key from local storage, or null if not found.
- *
- * @example
- * const apiKey = getApiKey();
- */
-export function getApiKey() {
-  return localStorage.getItem(apiKey);
-}
-
-/**
- * Clears the token, name, and API key from local storage.
+ * Clears the token and name from local storage.
  *
  * @example
  * clearStorage();
@@ -83,5 +58,4 @@ export function getApiKey() {
 export function clearStorage() {
   localStorage.removeItem(tokenKey);
   localStorage.removeItem(nameKey);
-  localStorage.removeItem(apiKey);
 }
