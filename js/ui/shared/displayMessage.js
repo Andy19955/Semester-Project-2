@@ -23,7 +23,7 @@ export function displayMessage(container, messageType, message) {
     "p-3",
     "border-solid",
     "border-2",
-    "break-all",
+    "break-words",
   ];
   switch (messageType) {
     case "error":
