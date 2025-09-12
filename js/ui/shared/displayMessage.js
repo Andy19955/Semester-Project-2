@@ -18,7 +18,13 @@ export function displayMessage(container, messageType, message) {
 
   parent.replaceChildren();
 
-  let messageClasses = ["font-medium", "p-3", "border-solid", "border-2"];
+  let messageClasses = [
+    "font-medium",
+    "p-3",
+    "border-solid",
+    "border-2",
+    "break-all",
+  ];
   switch (messageType) {
     case "error":
       messageClasses.push("bg-red-100", "text-red-900", "border-red-900");
