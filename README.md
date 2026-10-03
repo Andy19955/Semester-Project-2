@@ -1,5 +1,7 @@
 # The Auction Hub (Semester-Project-2)
 
+![Overview of the landing page](images/landing-page-overview.jpg)
+
 ## Description
 
 A modern online auction platform where users can discover rare treasures, place bids, and manage auction listings. Built as a comprehensive web application with responsive design and user authentication.

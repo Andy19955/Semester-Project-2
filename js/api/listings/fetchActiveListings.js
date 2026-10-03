@@ -19,7 +19,7 @@ import { listingsUrl } from "../../constants/apiUrls.js";
  * // Fetch without pagination
  * const activeListings = await fetchActiveListings(20);
  */
-export async function fetchActiveListings(limit, page) {
+export async function fetchActiveListings(limit, page, active = true) {
   const options = {
     method: "GET",
     headers: {
@@ -28,7 +28,7 @@ export async function fetchActiveListings(limit, page) {
   };
 
   const response = await fetch(
-    `${listingsUrl}/?limit=${limit}&page=${page}&_active=true&sort=endsAt&sortOrder=asc`,
+    `${listingsUrl}/?limit=${limit}&page=${page}&_active=${active}&sort=endsAt&sortOrder=asc`,
     options,
   );
   const json = await response.json();

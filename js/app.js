@@ -19,6 +19,7 @@ import { biddingFormListener } from "./listeners/listings/biddingFormListener.js
 import { editListingFormListener } from "./listeners/listings/editListingFormListener.js";
 import { deleteListingButtonListener } from "./listeners/listings/deleteListingButtonListener.js";
 import { searchListingsFormListener } from "./listeners/listings/searchListingsFormListener.js";
+import { activeListingsToggleListener } from "./listeners/listings/activeListingsToggleListener.js";
 
 /**
  * Routes the application based on current pathname.
@@ -75,6 +76,7 @@ function router() {
       activeListingsHandler(40, 1, true);
       updateAuthUI();
       searchListingsFormListener();
+      activeListingsToggleListener();
       break;
     case "/listing/":
     case "/listing/index.html":

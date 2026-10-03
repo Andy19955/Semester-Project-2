@@ -29,6 +29,13 @@ export async function searchListingsFormHandler(event, page = 1) {
   event.preventDefault();
   window.removeEventListener("scroll", activeListingsInfiniteScroll);
 
+  const activeListingsToggle = document.querySelector(
+    "#active-listings-toggle",
+  );
+  if (activeListingsToggle) {
+    activeListingsToggle.checked = false;
+  }
+
   const form = event.target;
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);

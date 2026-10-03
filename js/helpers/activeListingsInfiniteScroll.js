@@ -6,6 +6,7 @@ import { throttle } from "./throttleFunction.js";
 let currentListingsPage = 1;
 let isLoading = false;
 let hasMoreListings = true;
+let activeListingsOnly = true;
 
 /**
  * Sets up infinite scroll for active listings.
@@ -15,7 +16,11 @@ let hasMoreListings = true;
  * @example
  * setupActiveListingsInfiniteScroll(false);
  */
-export function setupActiveListingsInfiniteScroll(isLastPage) {
+export function setupActiveListingsInfiniteScroll(isLastPage, active = true) {
+  currentListingsPage = 1;
+  hasMoreListings = true;
+  activeListingsOnly = active;
+
   if (isLastPage === false) {
     window.addEventListener("scroll", activeListingsInfiniteScroll);
   }
@@ -40,7 +45,11 @@ export function activeListingsInfiniteScroll() {
 
       try {
         currentListingsPage++;
-        const listings = await fetchActiveListings(40, currentListingsPage);
+        const listings = await fetchActiveListings(
+          40,
+          currentListingsPage,
+          activeListingsOnly,
+        );
 
         if (listings.data.length === 0) {
           hasMoreListings = false;
