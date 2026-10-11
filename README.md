@@ -1,6 +1,6 @@
 # The Auction Hub (Semester-Project-2)
 
-![Overview of the landing page](images/landing-page-overview.jpg)
+![Overview of the landing page](./images/landing-page-overview.jpg)
 
 ## Description
 
